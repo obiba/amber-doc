@@ -1,0 +1,2 @@
+sphinxcontrib-httpdomain
+docutils<0.18
