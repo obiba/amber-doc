@@ -1,8 +1,7 @@
 Introduction
 ============
 
-The Amber Studio Application is the administration web interface of the Amber
-server.
+The Amber Studio Application is the administration web interface of the Amber server.
 
 Requirements
 ------------

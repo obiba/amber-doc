@@ -5,3 +5,4 @@ Case Reports
    :maxdepth: 1
 
    testing-crf
+   extract-records

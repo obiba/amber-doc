@@ -1,6 +1,8 @@
 Form Builder
 ============
 
+The form builder is the user interface for designing and testing a form.
+
 .. toctree::
    :maxdepth: 1
 
@@ -17,3 +19,5 @@ Form Builder
    translation
    backup-restore
    versions
+   style
+   extension

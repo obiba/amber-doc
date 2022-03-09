@@ -1,4 +1,34 @@
 How to format text entries?
 ===========================
 
-Open text fields are convenient for capturing data that are not known in advance (phone number vs. predefined choice), but to avoid writing complex validation rules, a mask can be defined to format the data when they are entered.
+Open text fields are convenient for capturing data that are not known in advance (e.g. a phone number, an institutional ID etc.). In order to avoid writing complex validation rules, a mask can be defined to format the data when they are entered.
+
+Mask
+----
+
+A mask is made of tokens, designating what type of character is expected for each position. The possible mask tokens are:
+
+====== ==================================================
+Token  Description
+====== ==================================================
+``#``  Numeric
+``S``  Letter, a to z, case insensitive
+``N``  Alphanumeric, case insensitive for letters
+``A``  Letter, transformed to uppercase
+``a``  Letter, transformed to lowercase
+``X``  Alphanumeric, transformed to uppercase for letters
+``x``  Alphanumeric, transformed to lowercase for letters
+====== ==================================================
+
+**Examples**
+
+The phone number ``(514) 286-0768`` can be captured by the mask ``(###) ###-####``.
+
+The institutional ID ``CA32 4455 6E5Z`` can be captured by the mask ``AA## #### XXXX``.
+
+Short Answer field
+------------------
+
+Select the **Short answer** field type: enter the **Mask** setting matching the format of the data to capture. You can also combine the mask with a validation rule (to verify that all characters have been entered for instance).
+
+Note that it is not recommended to use this open text field with a mask to capture date or time values. Use the **Date**, **Date and time** or **Time** specific field types instead.
