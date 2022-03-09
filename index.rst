@@ -22,10 +22,16 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
 .. toctree::
    :maxdepth: 2
-   :caption: Web User Guide
+   :caption: Studio User Guide
 
-   web-user-guide/studio/index
-   web-user-guide/collect/index
+   studio-user-guide/index
+   studio-user-guide/cookbook
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Collect User Guide
+
+   collect-user-guide/index
 
 Partners and Funders
 ====================

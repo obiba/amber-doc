@@ -1,8 +1,7 @@
-Studio User Guide
-=================
+Introduction
+============
 
-The Amber Studio Application is the administration web interface of the Amber
-server.
+The Amber Collect Application is the data collection web interface of the Amber server.
 
 Requirements
 ------------
