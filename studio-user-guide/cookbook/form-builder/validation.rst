@@ -1,3 +1,5 @@
+.. _cb_validation:
+
 How to validate field values?
 =============================
 
@@ -9,11 +11,15 @@ The validation is a short Javascript code. In the context of the execution of th
 
   $('VARIABLE')
 
-where ``VARIABLE`` is the name of the field from which the value is to retrieved. When the field is in a group, use a ``.`` for giving the full name of the field. For instance, if the field with name ``VARIABLE`` is in a group with name ``GROUP``, the value of the field will be:
+where ``VARIABLE`` is the name of the field from which the value is to retrieved. When the field is in a group, use a ``.`` for building the full name of the field. For instance, if the field with name ``VARIABLE`` is in a group with name ``GROUP``, the value of the field will be:
 
 .. code::
 
   $('GROUP.VARIABLE')
+
+**Validation message**
+
+When field validation fails, a validation message should be prompted to help user to correct the answer.
 
 **Examples**
 
