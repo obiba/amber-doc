@@ -1,0 +1,4 @@
+.. _rating:
+
+Rating
+======

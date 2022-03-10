@@ -65,14 +65,28 @@ The form items is a tree which the root is the form itself.
 
 The following form items are available:
 
-===================== =============== ========================================
-Type                  Category        Description
-===================== =============== ========================================
-:ref:`auto_complete`  Select
-:ref:`computed`       Misc
-:ref:`date`           Temporal
-:ref:`datetime`       Temporal
-===================== =============== ========================================
+========================== =============== ========================================
+Type                       Category        Description
+========================== =============== ========================================
+:ref:`auto_complete`       Select
+:ref:`computed`            Misc
+:ref:`date`                Temporal
+:ref:`datetime`            Temporal
+:ref:`dropdown`            Select
+:ref:`geo_data`            Geographic
+:ref:`group`               Structure
+:ref:`image_select`        Select
+:ref:`multiple_choices`    Select
+:ref:`number`              Number
+:ref:`paragraph`           Text
+:ref:`rating`              Number
+:ref:`section`             Structure
+:ref:`short_answer`        Text
+:ref:`single_choice`       Select
+:ref:`slider`              Number
+:ref:`time`                Temporal
+:ref:`toggle`              Logical
+========================== =============== ========================================
 
 
 Translations
