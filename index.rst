@@ -25,7 +25,9 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Studio User Guide
 
    studio-user-guide/index
-   studio-user-guide/cookbook
+   studio-user-guide/content/index
+   studio-user-guide/administration/index
+   studio-user-guide/cookbook/index
 
 .. toctree::
    :maxdepth: 2
