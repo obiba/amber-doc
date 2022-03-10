@@ -21,7 +21,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    admin/configuration
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Studio User Guide
 
    studio-user-guide/index
