@@ -1,3 +1,5 @@
+.. _cb_style:
+
 How to style a form item?
 -------------------------
 

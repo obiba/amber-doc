@@ -88,9 +88,6 @@ Type                       Category        Description
 :ref:`computed`            Other           Not visible, data is computed with the other item's data.
 ========================== =============== ========================================
 
-Common settings
-^^^^^^^^^^^^^^^
-
 The following definition settings are common to all items:
 
 ================== ====================================
@@ -100,26 +97,13 @@ Setting            Description
 ``Name``           The name of the item is not visible: it will be associated to the data collected.
 ``Label``          The label is usually a question or a title.
 ``Description``    The description gives some guidance about how to enter data, what are there meaning etc.
-``Condition``      The condition makes an item visible or not depending of other data. It is a small script which returns a logical value.
 ``Required``       Whether an input is mandatory (does not apply to structural items such as Group and Section).
-================== ====================================
-
-Dynamic settings
-^^^^^^^^^^^^^^^^
-
-Some settings are expressed by a script which is evaluated at each data entry.
-
-================== ====================================
-Setting            Description
-================== ====================================
-``Condition``      True when item is visible (and therefore data can be captured).
-``Validation``     True when item value is valid.
 ================== ====================================
 
 The scripting language is Javascript. It allows to express complex logic with a single line. See detailed explanations:
 
 * :ref:`cb_condition`
-* :ref:`cb_validation`.
+* :ref:`cb_validation`
 
 Translations
 ~~~~~~~~~~~~

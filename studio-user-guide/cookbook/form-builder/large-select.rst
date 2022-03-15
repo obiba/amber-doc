@@ -1,3 +1,5 @@
+.. _cb_large_select:
+
 How to make a select with a lot of options?
 ===========================================
 
