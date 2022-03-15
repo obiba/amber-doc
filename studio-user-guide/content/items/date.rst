@@ -42,3 +42,8 @@ Settings
      - The close button's label. Use a translation key when you want to have it in several languages.
    * - ``Default``
      - The default value. Make sure it is in the right format.
+
+Style
+~~~~~
+
+.. include:: common-style.rst
