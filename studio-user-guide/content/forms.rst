@@ -116,3 +116,21 @@ The scripting language is Javascript. It allows to express complex logic with a 
 
 Translations
 ~~~~~~~~~~~~
+
+The translations are a list of tuples:
+
+* a translation key,
+* associated texts for each of the defined languages.
+
+The translation key can be a real text (example: "What is your age?"), but to avoid confusion when the wording of the question changes it is recommended to use a short (yet meaningful enough) text (example: "age_label"). When a language has no translation for a given key, the fallback language is English (``en``). If no translation can be found for the fallback language, the translation key is returned.
+
+Add translation
+^^^^^^^^^^^^^^^
+
+**Add a translation key**
+
+A translation key can be added manually. First enter the key in the dialog, then once a new line has been added in the list of translations, click in each language cell to set the translated text. The list of translations will be saved automatically.
+
+**Merge with items translations keys**
+
+This operation automatically adds translation keys for each item setting representing a text to display (Label, Description, Hint, Close label etc.). If the translation key already exists, it is not modified, only new entries are added. See :ref:`cb_translation` for details.
