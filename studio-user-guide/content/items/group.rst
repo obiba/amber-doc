@@ -5,7 +5,7 @@ Group
 
 The group item is a structural item: it does not collect any data, it only contains other items. As a consequence, this item will not appear in the exported data dictionary.
 
-This item is appropriate when the form is render in multiple pages and several items are to be displayed in the same page. See also :ref:`section`.
+This item is appropriate when the form is rendered in multiple pages and several items are to be displayed in the same page. See also :ref:`section`.
 
 Preview
 -------
@@ -40,7 +40,6 @@ Definition
      - | The condition makes the group and its child items visible or not, depending of other data. It is a small script which returns a logical value: ``true`` when item is visible.
        | When no condition is specified (which is the default), the group and its child item are visible. Each child item can have its own condition rule as well.
        | See :ref:`cb_condition`
-
 
 Style
 ~~~~~

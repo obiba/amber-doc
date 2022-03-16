@@ -1,3 +1,5 @@
+.. _cb_image_map:
+
 How to make an image map?
 =========================
 
