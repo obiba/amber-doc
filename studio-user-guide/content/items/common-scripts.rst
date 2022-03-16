@@ -7,7 +7,7 @@ The following dynamic properties apply:
    * - Property
      - Definition
    * - ``Condition``
-     - | The condition makes an item visible or not depending of other data. It is a small script which returns a logical value: ``true`` when item is visible.
+     - | The condition makes an item visible or not, depending of other data. It is a small script which returns a logical value: ``true`` when item is visible.
        | When no condition is specified (which is the default), the item is visible.
        | See :ref:`cb_condition`
    * - ``Validation``

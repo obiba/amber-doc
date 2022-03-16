@@ -13,7 +13,7 @@ The standard properties apply:
    * - ``Label``
      - The label is usually a question or a title.
    * - ``Description``
-     - The description gives some guidance about how to enter data, what are there meaning etc.
+     - The description gives some guidance about how to enter data, what are their meaning etc.
    * - ``Required``
      - | Whether an input is mandatory.
        | Note that this does not apply when the visibility ``Condition`` is not satisfied.
