@@ -23,6 +23,9 @@ To delete several studies:
 
 You can also delete a specific study by pressing the study's Delete action button.
 
+.. note::
+  The removal of a study will fail when there are associated case reports. Make sure to extract the recorded data (if necessary) before removing them.
+
 Single study
 ------------
 

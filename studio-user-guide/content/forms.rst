@@ -21,9 +21,9 @@ From the list of forms the following operations are available:
 Add a form
 ~~~~~~~~~~
 
-When creating a form, a name is required, a description is optional. This purely informative for management purpose and will not appear when the form is administered.
+When creating a form, a name is required, a description is optional. This is purely informative for management purpose and will not appear when the form is administered.
 
-It is possible to prepopulate the form with a schema, that was previously exported from another form. This is optional and can also be done later.
+It is possible to prepopulate the form with a schema that was previously exported from another form. This is optional and can also be done later.
 
 Delete form(s)
 ~~~~~~~~~~~~~~~~~
@@ -34,6 +34,9 @@ To delete several forms:
 * Press the Delete selected forms button and confirm.
 
 You can also delete a specific form by pressing the form's Delete action button.
+
+.. note::
+  The removal of a form will fail when there are associated case reports. Make sure to extract the recorded data (if necessary) before removing them.
 
 Single form
 ------------
@@ -119,8 +122,8 @@ Translations
 
 The translations are a list of tuples:
 
-* a translation key,
-* associated texts for each of the defined languages.
+* A translation key,
+* Associated texts for each of the defined languages.
 
 The translation key can be a real text (example: "What is your age?"), but to avoid confusion when the wording of the question changes it is recommended to use a short (yet meaningful enough) text (example: "age_label"). When a language has no translation for a given key, the fallback language is English (``en``). If no translation can be found for the fallback language, the translation key is returned.
 
