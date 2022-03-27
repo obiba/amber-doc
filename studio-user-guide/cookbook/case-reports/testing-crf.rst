@@ -1,3 +1,5 @@
+.. _cb_testing_crf:
+
 How to test a case report form?
 ===============================
 

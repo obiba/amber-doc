@@ -23,10 +23,10 @@ Add a form
 
 When creating a form, a name is required, a description is optional. This is purely informative for management purpose and will not appear when the form is administered.
 
-It is possible to prepopulate the form with a schema that was previously exported from another form. This is optional and can also be done later.
+It is possible to pre-populate the form with a schema that was previously exported from another form. This is optional and can also be done later.
 
 Delete form(s)
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 To delete several forms:
 
