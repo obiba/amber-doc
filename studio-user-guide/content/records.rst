@@ -47,14 +47,14 @@ For consistency, records are always grouped by their form-revision. The download
 
 The download formats proposed are:
 
-* CSV, downloaded as a ZIP archive containg: one folder per form-revision including the data dictionary in **variables.json** file and the data in **data.csv** file. The CSV files header line are the variable names.
+* CSV, downloaded as a ZIP archive containing: one folder per form-revision including the data dictionary in **variables.json** file and the data in **data.csv** file. The CSV files header line are the variable names.
 * JSON, downloaded as a single JSON object dump made of: one entry per form-revision, each of these containg the ``data`` array and the ``variables``.
 
 Note also that:
 
 * When the list of records is filtered, only the filtered records are downloaded,
 * Each download is audited: who triggered the download, whith which filter criteria, about which patients,
-* The meta information about the record (user, history of actions) are not included in the downloaded file. 
+* The meta information about the record (user, history of actions) are not included in the downloaded file.
 
 View record
 ~~~~~~~~~~~
