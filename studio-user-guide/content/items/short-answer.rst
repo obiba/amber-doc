@@ -37,6 +37,18 @@ Settings
      - Help text below the input field.
    * - ``Default``
      - The default value. Make sure it is in the right format.
+   * - ``Mask``
+     - | Text formatting using a mask. Below are the mask tokens:
+       |
+       | ``#``	Numeric
+       | ``S``	Letter, a to z, case insensitive
+       | ``N``	Alphanumeric, case insensitive for letters
+       | ``A``	Letter, transformed to uppercase
+       | ``a``	Letter, transformed to lowercase
+       | ``X``	Alphanumeric, transformed to uppercase for letters
+       | ``x``	Alphanumeric, transformed to lowercase for letters
+       |
+       | For instance the mask ``(###) ### - ####`` will format a phone number entry such as ``(514) 286 - 0768``.
 
 Style
 ~~~~~
