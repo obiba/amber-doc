@@ -5,6 +5,8 @@ The Amber Collect application is the data collection web interface of the Amber 
 
 Using Amber Collect requires authentication. Depending on the user role and authorizations, some Case Report Forms will be visible or not.
 
+**No personal information is stored in the app** after the case report has been completed: private data are automatically saved on the Amber server (as soon as the network is accessible) and cannot be read back.
+
 Requirements
 ------------
 
