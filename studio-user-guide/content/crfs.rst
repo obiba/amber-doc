@@ -5,9 +5,15 @@ Case Report Forms
 
 The Case report forms drives the way the form will be used by the interviewers. It defines:
 
-* The version of the form to be used,
+* Some descriptive information (name, description) that will be displayed in the Amber Collect app,
+* The form and its version to be used,
+* The multiple records policy, which is the strategy to adopt when a case report is saved (based on the individual's ID). Multiple records can be registered, or only a single one for the same individual. In this latter case a new record can be rejected or can update the existing one,
 * The access permissions,
 * The activity (enabled/disabled).
+
+.. note::
+
+  The translations of the Case report form's name and description are looked up in the form's translations configuration.
 
 .. note::
 
