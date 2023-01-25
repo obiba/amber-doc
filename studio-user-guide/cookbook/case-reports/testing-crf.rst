@@ -18,7 +18,7 @@ You can verify that a new version has been added to the list of form revisions.
 Step 2 - Create a CRF for this form version with restricted access
 ------------------------------------------------------------------
 
-To create a new CRF, select the **Case Report Forms** menu in the left drawer and press the button to add a new CRF. The dialog that appears allows you to:
+To create a new CRF, select the **Case reports > Forms** menu in the left drawer and press the button to add a new CRF. The dialog that appears allows you to:
 
 * Select the **Form** name to be tested,
 * Select the **Revision** number that you just created,
