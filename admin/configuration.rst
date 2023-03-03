@@ -150,4 +150,6 @@ Recommended security headers are (to be added to the ``apache2.conf`` file, requ
   Header set Content-Security-Policy "frame-ancestors 'none'"
   Header set Referrer-Policy "same-origin"
   Header set Permissions-Policy "fullscreen=(self)"
+  Header set X-Permitted-Cross-Domain-Policies "none"
+  Header set Expect-CT: max-age=0
   Header onsuccess edit Set-Cookie ^(.+)$ "$1;HttpOnly;Secure;SameSite=Strict"
