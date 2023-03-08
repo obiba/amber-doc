@@ -15,6 +15,5 @@ The form builder is the user interface for designing and testing a form.
    image-map
    translation
    backup-restore
-   versions
    style
    extension
