@@ -13,8 +13,6 @@ The form builder is the user interface for designing and testing a form.
    computed-field
    group
    image-map
-   geo-map
-   cut-copy-paste
    translation
    backup-restore
    versions
