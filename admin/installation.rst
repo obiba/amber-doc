@@ -52,6 +52,42 @@ The steps to follow are:
 2. Define the Amber (server and apps) parts (configuration and/or source files) to customize,
 3. Use the ``Docker Compose`` tool to build and run these images in your specific environment.
 
+The environment variables that are exposed by the ``amber`` image are:
+
+=============================== =========================================================================
+Environment Variable            Description
+=============================== =========================================================================
+``CLUSTER_COUNT``               Node cluster count, defaults to all available CPU cores
+``APP_NAME``                    JWT issuer
+``APP_SECRET_KEY``              Encryption key
+``APP_SECRET_IV``               Secret string for the encryption's initial vector,
+``APP_URL``                     JWT audience
+``CLIENT_URLS``                 Comma separated client urls, for the CORS policy
+``AMBER_STUDIO_URL``            Amber Studio app url, to be included in the notification emails
+``AMBER_COLLECT_URL``           Amber Collect app url, to be included in the notification emails
+``MONGODB_URL``                 The MongoDB connection string
+``ENCRYPT_DATA``                Whether the patient/participant data should be encrypted in the database
+``RECAPTCHA_SECRET_KEY``        The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key.
+``GMAIL``                       The Gmail user name for the notification service (optional, only if Gmail transport service is used)
+``GMAIL_PASSWORD``              The Gmail user password for the notification service (optional, only if Gmail transport service is used)
+``SENDINBLUE_API_KEY``          The `Sendinblue <https://www.sendinblue.com/>`_ API key for the notification service (optional, only if Sendinblue transport service is used)
+``SMTP_HOST``                   The SMTP server host
+``SMTP_NAME``                   The SMTP server name
+``SMTP_SECURE``                 Whether the SMTP connection should use SSL
+``SMTP_REQUIRE_TLS``            Whether the SMTP connection should use TLS (when secure is false)
+``SMTP_LOGGER``                 Enable SMTP logging
+``SMTP_DEBUG``                  Enable SMTP debug by sending log events
+``SMTP_USER``                   The SMTP server user
+``SMTP_PASSWORD``               The SMTP server user's password
+``FROM_EMAIL``                  The automated sender email address,
+``ADMINISTRATOR_EMAIL``         User seeding when there is no administrator in the database
+``ADMINISTRATOR_PWD``           User seeding when there is no administrator in the database
+``LOG_LEVEL``                   Logger level (`error`` `warn`` `info`` `verbose`` `debug`` `silly`` etc. (see [winstonjs](https://github.com/winstonjs/winston))), default is `info`
+``LOG_FILE``                    File logger path
+``LOG_FILE_LEVEL``              File logger level when `LOG_FILE` is specified, default is `LOG_LEVEL`
+``NODE_ENV``                    Name of the config file to be merged with the default one (e.g. `production`)
+=============================== =========================================================================
+
 Upgrade
 -------
 

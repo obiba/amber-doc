@@ -20,8 +20,8 @@ Property                                    Description
 ``encrypt_iv``                              Encryption initial vector, to be modified. Overridden by the ``APP_SECRET_IV`` environment variable.
 ``mongodb``                                 `MongoDB connection string <https://www.mongodb.com/docs/manual/reference/connection-string/>`_. Overridden by the ``MONGODB_URL`` environment variable. Default is "mongodb://localhost:27017/amber"
 ``client_urls``                             Allowed client URLs (comma separated) for CORS check. Wildcard "*" is supported. Overridden by the ``CLIENT_URLS`` environment variable. Default is "*".
-``amber_studio_url``                        The Amber Studio URL. Default is "http://localhost:3080".
-``amber_collect_url``                       The Amber Studio URL. Default is "http://localhost:3090".
+``amber_studio_url``                        The Amber Studio URL to be included in notification emails. Default is "http://localhost:3080".
+``amber_collect_url``                       The Amber Studio URL to be included in notification emails. Default is "http://localhost:3090".
 ``api_url``                                 The Amber Server URL. Overridden by the ``APP_URL`` environment variable. Default is ": "http://localhost:3030/".
 ``recaptcha_secret_key``                    The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key. Overridden by the ``RECAPTCHA_SECRET_KEY`` environment variable.
 =========================================== =========================================================================
