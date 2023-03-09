@@ -2,6 +2,7 @@ Installation
 ============
 
 Amber is a system of three applications:
+
 * **Amber** server: Business layer over the database: users, groups, studies, forms, case records etc. are all defined in this application and their access require authentication and authorization. It is only accessible via an API.
 * **Amber Studio** web app: Content management web application, using data and services of the Amber server
 * **Amber Collect** web app: Case report data collection web app, using data and services of the Amber server
