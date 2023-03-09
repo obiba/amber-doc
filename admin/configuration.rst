@@ -112,6 +112,35 @@ Property                                    Description
 ``export.identifier_variable``              Identifier variable name to be used in the exported dataset: Default is "id".
 =========================================== =========================================================================
 
+Amber Studio
+------------
+
+Amber Studio is a Single Page Application (SPA) that needs to be built specifically for the deployment environment (Amber server URL and reCAPTCHA site key are to be provided). Then the configuration is used in the build phase. To facilitate the customization of the app, the `Amber Studio's settings.json <https://github.com/obiba/amber-studio/blob/main/settings.json>`_ can be amended.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``theme``                                   Some CSS classes to be applied on different components to minimally alter the style.
+``licenses``                                Licenses that can be applied to forms.
+``i18n``                                    Translations, per language. New languages can be added.
+=========================================== =========================================================================
+
+Amber Collect
+-------------
+
+Amber Collect is a Single Page Application (SPA) that needs to be built specifically for the deployment environment (Amber server URL and reCAPTCHA site key are to be provided). Then the configuration is used in the build phase. To facilitate the customization of the app, the `Amber Collect's settings.json <https://github.com/obiba/amber-collect/blob/main/settings.json>`_ can be amended.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``theme``                                   Some CSS classes to be applied on different components to minimally alter the style.
+``lock``                                    Lock feature can be enabled, with an optionally shuffled numeric pad.
+``links``                                   Useful links.
+``licenses``                                Licenses that were applied to forms.
+``i18n``                                    Translations, per language. New languages can be added.
+=========================================== =========================================================================
+
+
 Reverse Proxy Configuration
 ---------------------------
 

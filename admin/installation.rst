@@ -26,9 +26,11 @@ Memory (RAM) Minimum: 4GB, Recommended: >4GB
 Server Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Amber server and apps are pure Javascript software based on `nodejs <https://nodejs.org/>`_ (Amber) or `Quasar <https://quasar.dev/>`_ (Amber Studio and Amber Collect). Despite it could be possible to set up a native runtime environment, we recommend to use a containerized one (Docker), to facilitate to customization and the deployment of the software applications.
+Amber server and apps are pure JavaScript software based on `nodejs <https://nodejs.org/>`_ (Amber) and `Quasar <https://quasar.dev/>`_ (Amber Studio and Amber Collect). Despite it could be possible to set up a native runtime environment, we recommend to use a containerized one (Docker), to facilitate to customization and the deployment of the software applications.
 
 The database that is used by Amber server is `MongoDB <https://www.mongodb.com/>`_ which can also be deployed from a container.
+
+Then recommended runtime environment is:
 
 ========================= ================================================================ ========================
 Software                  Documentation                                                    Usage
