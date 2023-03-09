@@ -88,6 +88,15 @@ Environment Variable            Description
 ``NODE_ENV``                    Name of the config file to be merged with the default one (e.g. `production`)
 =============================== =========================================================================
 
+The environment variables that are exposed by the ``amber-studio`` and ``amber-collect`` images are:
+
+=============================== =========================================================================
+Environment Variable            Description
+=============================== =========================================================================
+``AMBER_URL``                   The URL to the Amber server.
+``RECAPTCHA_SITE_KEY``          The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ site key.
+=============================== =========================================================================
+
 Upgrade
 -------
 
