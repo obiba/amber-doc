@@ -1,6 +1,117 @@
 Configuration
 =============
 
+Amber Server
+------------
+
+See the `config/default.json <https://github.com/obiba/amber/blob/main/config/default.json>`_ settings in the source code for reference.
+
+Some of these settings can be overridden by environment variables (``.env`` file supported, see `Dotenv <https://www.dotenv.org/>`_). The list of the environment variables is described in the `Amber Environment Variables <https://github.com/obiba/amber/blob/main/README.md#environment-variables>`_ documentation.
+
+Main Settings
+~~~~~~~~~~~~~
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``host``                                    Default is "localhost"
+``port``                                    Default is ``3030``.
+``encrypt_data``                            Whether the collected data are encrypted in the database. Default is ``false``.
+``encrypt_iv``                              Encryption initial vector, to be modified. Overridden by the ``APP_SECRET_IV`` environment variable.
+``mongodb``                                 `MongoDB connection string <https://www.mongodb.com/docs/manual/reference/connection-string/>`_. Overridden by the ``MONGODB_URL`` environment variable. Default is "mongodb://localhost:27017/amber"
+``client_urls``                             Allowed client URLs (comma separated) for CORS check. Wildcard "*" is supported. Overridden by the ``CLIENT_URLS`` environment variable. Default is "*".
+``amber_studio_url``                        The Amber Studio URL. Default is "http://localhost:3080".
+``amber_collect_url``                       The Amber Studio URL. Default is "http://localhost:3090".
+``api_url``                                 The Amber Server URL. Overridden by the ``APP_URL`` environment variable. Default is ": "http://localhost:3030/".
+``recaptcha_secret_key``                    The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key. Overridden by the ``RECAPTCHA_SECRET_KEY`` environment variable.
+=========================================== =========================================================================
+
+Authentication Settings
+~~~~~~~~~~~~~~~~~~~~~~~
+
+See `Feathers Authentication Service <https://feathersjs.com/api/authentication/service.html#configuration>`_ and `Feathers Local Authentication <https://feathersjs.com/api/authentication/local.html>`_ documentations for more details.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``authentication.secret``                   The authentication token (JWT) signing secret, also used for encrypting individual data (when enabled). Overridden by the ``APP_SECRET_KEY`` environment variable.
+``authentication.jwtOptions.audience``      The JWT audience field. Overridden by the ``APP_URL`` environment variable. Default is "https://example.com".
+``authentication.jwtOptions.issuer``        The JWT issuer field. Overridden by the ``APP_NAME`` environment variable. Default is "amber".
+``authentication.jwtOptions.expiresIn``     Timeout after which the authentication token (JWT) expires. Default is ``60d``.
+``authentication.totp2faRequired``          Whether the two-factor mechanism "Time based One Time Password" is enabled. Default is ``true``.
+``authentication.activityTimeout``          Timeout after which the authentication token (JWT) expires when not used. Default is ``5d``.
+=========================================== =========================================================================
+
+Notification Email Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Mail Service**
+
+By default, the mail service tries to connect to a SMTP server. Alternatively, other mail transport providers can be used: the SMTP server settings can be overridden by the the ``GMAIL``/``GMAIL_PASSWORD`` or the ``SENDINBLUE_API_KEY`` environment variables if defined. See `sendinblue docs <https://developers.sendinblue.com/docs>`_ for more details on this service.
+
+See `Nodemailer SMTP <https://nodemailer.com/smtp/>`_ documentation for more details.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``smtp.host``                               The SMTP server host name.
+``smtp.name``                               The SMTP server (optional) name.
+``smtp.user``                               The SMTP server user name.
+``smtp.pw``                                 The SMTP server user password.
+``smtp.secure``                             The SMTP server secure flag. Default is ``true``.
+``smtp.require_tls``                        Whether SMTP server requires TLS. Default is ``false``.
+``smtp.logger``                             Whether SMTP server logging is enabled. Default is ``false``.
+``smtp.debug``                              Whether SMTP server debug is enabled. Default is ``false``.
+=========================================== =========================================================================
+
+**Mail Templates**
+
+Mail templates are defined per language. They can be specified inline or in separate files.
+
+Example of the ``resetPwd`` email template specified inline:
+
+.. code-block:: json
+
+  {
+    "en": {
+      "subject": "[{app_name}] Successfully Reset Password",
+      "html": "<html><p>Dear {firstname} {lastname},</p> <p>The password was reset successfully.</p> <p>---<br/>This email was automatically sent, please do not reply.</p></html>"
+    }
+  }
+
+Example of the ``resetPwd`` email template specified in a local file:
+
+.. code-block:: json
+
+  {
+    "en": {
+      "subject": "[{app_name}] Successfully Reset Password",
+      "file": "/path/to/resetPwd-en-template.html"
+    }
+  }
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``from_email``                              The sender's email address. Default is "no-reply@example.org".
+``email_templates.notifySignup``            Informs the administrators that a new user has signed up.
+``email_templates.resendVerifySignup``      Sends link to verify email after sign up (resent).
+``email_templates.verifySignup``            Sends link to verify email after sign up.
+``email_templates.sendResetPwd``            Sends link to reset password email.
+``email_templates.resetPwd``                Informs the password was reset successfully.
+``email_templates.passwordChange``          Informs the password was updated successfully.
+=========================================== =========================================================================
+
+Other Settings
+~~~~~~~~~~~~~~
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``export.entity_type``                      Entity type to be specified in the exported data dictionary. Default is "Participant".
+``export.identifier_variable``              Identifier variable name to be used in the exported dataset: Default is "id".
+=========================================== =========================================================================
+
 Reverse Proxy Configuration
 ---------------------------
 
