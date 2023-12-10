@@ -10,5 +10,5 @@ The Amber Studio Application is the administration web interface of the Amber se
 Requirements
 ------------
 
-This web interface is a javascript application requiring a modern web browser.
+This web interface is a JavaScript application requiring a modern web browser.
 There is no requirement regarding the operating system.

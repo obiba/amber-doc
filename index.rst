@@ -35,6 +35,12 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
    collect-user-guide/index
 
+.. toctree::
+  :maxdepth: 2
+  :caption: Visit User Guide
+
+  visit-user-guide/index
+
 Partners and Funders
 ====================
 

@@ -8,3 +8,4 @@ The following documentation gives some operation guidelines and good practices, 
 
    form-builder/index
    case-reports/index
+   interviews/index

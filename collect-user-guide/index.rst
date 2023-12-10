@@ -1,7 +1,7 @@
 Introduction
 ============
 
-The Amber Collect application is the data collection web interface of the Amber server. The Case Report Forms that are enabled can be used to report cases.
+The Amber Collect application is the case report data collection web interface of the Amber server. The Case Report Forms that are enabled can be used to report cases.
 
 Using Amber Collect requires authentication. Depending on the user role and authorizations, some Case Report Forms will be visible or not.
 
@@ -10,7 +10,7 @@ Using Amber Collect requires authentication. Depending on the user role and auth
 Requirements
 ------------
 
-This web interface is a javascript application requiring a modern web browser. There is no requirement regarding the operating system: it can be either a desktop or a mobile one.
+This web interface is a JavaScript application requiring a modern web browser. There is no requirement regarding the operating system: it can be either a desktop or a mobile one.
 
 Installation
 ------------

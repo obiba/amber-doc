@@ -1,11 +1,12 @@
 Installation
 ============
 
-Amber is a system of three applications:
+Amber is a system of several applications:
 
 * **Amber** server: Business layer over the database: users, groups, studies, forms, case records etc. are all defined in this application and their access require authentication and authorization. It is only accessible via an API.
 * **Amber Studio** web app: Content management web application, using data and services of the Amber server
 * **Amber Collect** web app: Case report data collection web app, using data and services of the Amber server
+* **Amber Visit** web app: Interview data collection web app, using data and services of the Amber server
 
 These applications are written in JavaScript.
 
@@ -65,16 +66,22 @@ Environment Variable            Description
 ``APP_SECRET_KEY``              Encryption key
 ``APP_SECRET_IV``               Secret string for the encryption's initial vector,
 ``APP_URL``                     JWT audience
+``APP_API_KEYS``                The allowed API keys (comma separated values) for triggering backround tasks execution,
 ``CLIENT_URLS``                 Comma separated client urls, for the CORS policy
 ``AMBER_STUDIO_URL``            Amber Studio app url, to be included in the notification emails
 ``AMBER_COLLECT_URL``           Amber Collect app url, to be included in the notification emails
+``AMBER_VISIT_URL``             Amber Visit app url, to be included in the notification emails
 ``MONGODB_URL``                 The MongoDB connection string
 ``ENCRYPT_DATA``                Whether the patient/participant data should be encrypted in the database
+``OTP_TIMEOUT``                 Number of minutes during which the onetime password (OTP) sent by email is valid. Default is 5; when set to 0, the email-based onetime password is deactivated. This does not apply to the time-based onetime password (TOTP) procedure, which can be activated per user.
 ``RECAPTCHA_SECRET_KEY``        The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key.
+``SIGNUP_WHITELIST``            List of email domains that are allowed to signup. Use '*' for wild card. Default is all.
+``SIGNUP_BLACKLIST``            List of email domains that are NOT allowed to signup. Use '*' for wild card. Default is none.
 ``GMAIL``                       The Gmail user name for the notification service (optional, only if Gmail transport service is used)
 ``GMAIL_PASSWORD``              The Gmail user password for the notification service (optional, only if Gmail transport service is used)
 ``SENDINBLUE_API_KEY``          The `Sendinblue <https://www.sendinblue.com/>`_ API key for the notification service (optional, only if Sendinblue transport service is used)
 ``SMTP_HOST``                   The SMTP server host
+``SMTP_PORT``                   The SMTP server port
 ``SMTP_NAME``                   The SMTP server name
 ``SMTP_SECURE``                 Whether the SMTP connection should use SSL
 ``SMTP_REQUIRE_TLS``            Whether the SMTP connection should use TLS (when secure is false)
@@ -91,28 +98,19 @@ Environment Variable            Description
 ``NODE_ENV``                    Name of the config file to be merged with the default one (e.g. `production`)
 =============================== =========================================================================
 
-The environment variables that are exposed by the ``amber-studio`` and ``amber-collect`` images are:
+The environment variables that are exposed by the ``amber-studio``, ``amber-collect`` and ``amber-visit`` images are:
 
 =============================== =========================================================================
 Environment Variable            Description
 =============================== =========================================================================
 ``AMBER_URL``                   The URL to the Amber server.
-``RECAPTCHA_SITE_KEY``          The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ site key.
+``RECAPTCHA_SITE_KEY``          The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ site key. If not provided, the Sign Up page will not be activated.
 =============================== =========================================================================
 
 Upgrade
 -------
 
 The upgrade procedures are handled by the application itself.
-
-Usage
-~~~~~
-
-To access Amber with a web browser the following urls may be used (port numbers may be different depending on Docker Compose configuration):
-
-* Amber Server: http://localhost:3030/
-* Amber Studio: http://localhost:3080/
-* Amber Collect: http://localhost:3090/
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
