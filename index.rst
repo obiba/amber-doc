@@ -1,8 +1,3 @@
-.. Amber documentation master file, created by
-   sphinx-quickstart on Mon Feb 28 11:43:58 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 OBiBa Amber Documentation
 =========================
 

@@ -45,3 +45,14 @@ Amber Collect is a web application for collecting case reports:
 * **Multi-languages**: when the form is designed in several languages, the user can easily switch to another language, with the corresponding character set and left-right layout is automatically detected and applied.
 * **Offline-first design**: in case the network in not accessible, collected data are stored encrypted locally. When connection is restored, data are automatically sent to the Amber Server for permanent storage.
 * **Progressive web app**: a PWA is an installable web application, facilitating its deployment on mobile devices (no app store required). See `What are Progressive Web Apps? <https://web.dev/what-are-pwas/>`_.
+
+
+Amber Visit
+-----------
+
+Amber Visit is a web application for collecting interviews:
+
+* **Secure**: authentication is required and authorizations apply. Two-factor authentication is supported.
+* **Efficient**: interface is deliberatly minimal to focus on data collection.
+* **Multi-languages**: when the interview is designed in several languages, the user can easily switch to another language, with the corresponding character set and left-right layout is automatically detected and applied.
+* **Offline-first design**: in case the network in not accessible, collected data are stored encrypted locally. When connection is restored, data are automatically sent to the Amber Server for permanent storage.
