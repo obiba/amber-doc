@@ -18,7 +18,7 @@ You can verify that a new version has been added to the list of form revisions.
 Step 2 - Create a CRF for this form version with restricted access
 ------------------------------------------------------------------
 
-To create a new CRF, select the **Case reports > Forms** menu in the left drawer and press the button to add a new CRF. The dialog that appears allows you to:
+To create a new CRF, select the **Design > Case report forms** menu in the left drawer and press the button to add a new CRF. The dialog that appears allows you to:
 
 * Select the **Form** name to be tested,
 * Select the **Revision** number that you just created,
@@ -38,4 +38,4 @@ Login in the Amber Collect web app. In the home page, the CRF should appear in t
 
 You do not necessarily need to save the Case Report to see what the data collected look like. After pausing the Case Report, select on the **Case Reports** menu (in the left drawer). The list of the Case Reports will appear. Click on the eye icon to see the data of this individual (in the standard `JSON <https://www.json.org>`_ format).
 
-In case you have saved the Case Report data, the data cannot be seen in the Amber Collect any more. Then go to the Amber Studio app, select the study and the **Records** menu in the left drawer. Identify which case report you just saved (with the individual ID, form name and version) and press the eye icon to see the data (in JSON format). This test case report must then be removed to not pollute the real collected data.
+In case you have saved the Case Report data, the data cannot be seen in the Amber Collect any more. Then go to the Amber Studio app, select the study and the **Data collection > Case reports** menu in the left drawer. Identify which case report you just saved (with the individual ID, form name and version) and press the eye icon to see the data (in JSON format). This test case report must then be removed to not pollute the real collected data.

@@ -33,6 +33,8 @@ Amber Studio is a web application for managing Amber system content:
 * **Form import/export**: export the complete form design and import it in another Amber system.
 * **Case report form access control**: enable a CRF and restrict its access to specific users/groups.
 * **Case report records**: filter records (by date, form and revision), visualize and modify them afterwards. Export in multiple formats (CSV, Excel, JSON), including full data dictionary as converted from the form.
+* **Interview designs**: interviews are a sequence of interdependent forms, conducted in the context of a planned data collection campaign. A campaign includes a list of participants who are invited to answer interview questionnaires through the Amber Visit web application.
+* **Interview records**: filter records (by date, interview design, campaign, status etc.). Export in multiple formats (CSV, Excel, JSON), including full data dictionary as converted from the form.
 
 
 Amber Collect
