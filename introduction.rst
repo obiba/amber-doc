@@ -1,7 +1,7 @@
 Introduction
 ============
 
-Amber is a web-based applications system for collecting case reports data based on forms. This system is composed of the Amber Server application and of several frontend applications with different purposes (content administration or data collection). Amber is designed to ensure that data is collected in an automated, efficient and secure way in order to minimize human errors. Forms can be designed, internationalized and revised without requiring programming skills.
+Amber is a web-based applications system for collecting patients case reports and participants interviews data based on forms. This system is composed of the Amber Server application and of several frontend applications with different purposes (content administration or data collection). Amber is designed to ensure that data is collected in an automated, efficient and secure way in order to minimize human errors. Forms can be designed, internationalized and revised without requiring programming skills.
 
 The diagram below illustrates the relationships between the Amber server and the other frontend applications:
 
