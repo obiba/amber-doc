@@ -79,9 +79,9 @@ Environment Variable            Description
 ``SIGNUP_BLACKLIST``            List of email domains that are NOT allowed to signup. Use '*' for wild card. Default is none.
 ``GMAIL``                       The Gmail user name for the notification service (optional, only if Gmail transport service is used)
 ``GMAIL_PASSWORD``              The Gmail user password for the notification service (optional, only if Gmail transport service is used)
-``SENDINBLUE_API_KEY``          The `Sendinblue <https://www.sendinblue.com/>`_ API key for the notification service (optional, only if Sendinblue transport service is used)
+``BREVO_API_KEY``               The `Brevo <https://www.brevo.com/>`_ API key for the notification service (optional, only if Brevo transport service is used). Legacy alias: ``SENDINBLUE_API_KEY``.
 ``SMTP_HOST``                   The SMTP server host
-``SMTP_PORT``                   The SMTP server port
+``SMTP_PORT``                   The SMTP server port (defaults to 587 when ``SMTP_SECURE`` is false, or 465 when true)
 ``SMTP_NAME``                   The SMTP server name
 ``SMTP_SECURE``                 Whether the SMTP connection should use SSL
 ``SMTP_REQUIRE_TLS``            Whether the SMTP connection should use TLS (when secure is false)
@@ -89,13 +89,23 @@ Environment Variable            Description
 ``SMTP_DEBUG``                  Enable SMTP debug by sending log events
 ``SMTP_USER``                   The SMTP server user
 ``SMTP_PASSWORD``               The SMTP server user's password
-``FROM_EMAIL``                  The automated sender email address,
+``FROM_EMAIL``                  The automated sender email address
+``GITHUB_KEY``                  OAuth client ID for the GitHub provider
+``GITHUB_SECRET``               OAuth client secret for the GitHub provider
+``GOOGLE_KEY``                  OAuth client ID for the Google provider
+``GOOGLE_SECRET``               OAuth client secret for the Google provider
+``OIDC_NAME``                   OpenID Connect provider name (used to label the provider in the UI)
+``OIDC_ISSUER_URL``             OpenID Connect issuer URL used for OIDC discovery and UserInfo endpoint resolution (e.g. ``https://your-idp/realms/myrealm``)
+``OIDC_KEY``                    OpenID Connect client ID
+``OIDC_SECRET``                 OpenID Connect client secret
+``OIDC_SCOPE``                  OpenID Connect scope as comma or space separated names (e.g. ``openid email profile``); defaults to the issuer's supported scopes or ``openid email profile``
+``OIDC_NONCE``                  Whether to include a nonce in the OIDC authorization request (``true`` or ``1``, default is false)
 ``ADMINISTRATOR_EMAIL``         User seeding when there is no administrator in the database
 ``ADMINISTRATOR_PWD``           User seeding when there is no administrator in the database
-``LOG_LEVEL``                   Logger level (`error`` `warn`` `info`` `verbose`` `debug`` `silly`` etc. (see [winstonjs](https://github.com/winstonjs/winston))), default is `info`
+``LOG_LEVEL``                   Logger level (``error``, ``warn``, ``info``, ``verbose``, ``debug``, ``silly``, etc. — see `winstonjs <https://github.com/winstonjs/winston>`_), default is ``info``
 ``LOG_FILE``                    File logger path
-``LOG_FILE_LEVEL``              File logger level when `LOG_FILE` is specified, default is `LOG_LEVEL`
-``NODE_ENV``                    Name of the config file to be merged with the default one (e.g. `production`)
+``LOG_FILE_LEVEL``              File logger level when ``LOG_FILE`` is specified, default is ``LOG_LEVEL``
+``NODE_ENV``                    Name of the config file to be merged with the default one (e.g. ``production``)
 =============================== =========================================================================
 
 The environment variables that are exposed by the ``amber-studio``, ``amber-collect`` and ``amber-visit`` images are:
