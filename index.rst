@@ -45,7 +45,7 @@ The development of this application was made possible thanks to the support of o
  :height: 60px
  :target: https://www.cglobalsurgery.com/
 
-.. |ep-logo| image:: https://www.obiba.org/assets/themes/bootstrap/img/epigeny.png
+.. |ep-logo| image:: https://www.obiba.org/assets/img/epigeny.png
  :height: 40px
  :target: https://www.epigeny.io/
 

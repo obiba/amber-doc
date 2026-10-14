@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" width="1160" height="330"><defs><style>.t{font-family:Sora;font-weight:600;font-size:19px;fill:#0D2321;letter-spacing:-0.4px}.w{fill:#fff}.s{font-family:"Instrument Sans";font-size:14px;fill:#4F6663}.sw{fill:#D6EBE8}.c{font-family:"Instrument Sans";font-weight:600;font-size:15px;fill:#4F6663}.b{fill:#fff;stroke:#00615C;stroke-width:2.2}.f{fill:#00615C}.d{fill:#fff;stroke:#7FD3CB;stroke-width:2.2;stroke-dasharray:7 5}.l{stroke:#00615C;stroke-width:2.2;fill:none}</style><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00615C"/></marker></defs>
+<rect width="1160" height="330" fill="#fff"/>
+<g class="l" marker-end="url(#a)"><path d="M240 167H298"/><path d="M480 167H558"/><path d="M390 247V295H140V206"/><path d="M660 130V45H140V128"/><path d="M760 167H878" stroke-dasharray="9 7"/></g>
+<rect class="b" x="40" y="130" width="200" height="74" rx="5"/>
+<path class="b" d="M390 87L480 167L390 247L300 167Z" stroke-linejoin="round"/>
+<rect class="b" x="560" y="130" width="200" height="74" rx="5"/>
+<rect class="f" x="880" y="130" width="240" height="74" rx="5"/>
+<g text-anchor="middle">
+<text class="t" x="140" y="163">Edit form</text><text class="s" x="140" y="186">schema, i18n</text>
+<text class="s" x="390" y="152" style="font-weight:600;fill:#0D2321;font-size:15px"><tspan x="390">Is form</tspan><tspan x="390" dy="19">design</tspan><tspan x="390" dy="19">completed?</tspan></text>
+<text class="t" x="660" y="163">Tag form</text><text class="t" x="660" y="188">version</text>
+<text class="t w" x="1000" y="163">Collect data with</text><text class="t w" x="1000" y="188">form version</text>
+<text class="c" x="519" y="155">yes</text><text class="c" x="265" y="285">no</text><text class="c" x="400" y="35">repeat</text>
+</g></svg>
