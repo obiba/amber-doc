@@ -87,16 +87,16 @@ Property                                    Description
 
 **Participant / Campaign Strategy**
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``authentication.participant.service``      Feathers service used to look up participants. Default is ``participant``.
-``authentication.participant.hashSize``     bcrypt hash rounds for participant passwords. Default is ``10``.
-``authentication.participant.passwordLength`` Length of the auto-generated participant access code. Default is ``8``.
-``authentication.campaign.service``         Feathers service used for campaign-based participant authentication. Default is ``participant``.
-``authentication.campaign.hashSize``        bcrypt hash rounds for campaign passwords. Default is ``10``.
-``authentication.campaign.passwordLength``  Length of the auto-generated campaign access code. Default is ``8``.
-=========================================== =========================================================================
+============================================== =========================================================================
+Property                                       Description
+============================================== =========================================================================
+``authentication.participant.service``         Feathers service used to look up participants. Default is ``participant``.
+``authentication.participant.hashSize``        bcrypt hash rounds for participant passwords. Default is ``10``.
+``authentication.participant.passwordLength``  Minimum length of the participant personal password. Default is ``8``.
+``authentication.campaign.service``            Feathers service used for campaign-based participant authentication. Default is ``participant``.
+``authentication.campaign.hashSize``           bcrypt hash rounds for campaign passwords. Default is ``10``.
+``authentication.campaign.passwordLength``     Not used. Default is ``8``.
+============================================== =========================================================================
 
 **API Key Strategy**
 
@@ -133,17 +133,17 @@ Property                                    Description
 
 For a generic OIDC provider (any name other than ``github`` / ``google`` that includes ``issuer_url``):
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``authentication.oauth.<name>.key``         OIDC client ID. Overridden by the ``OIDC_KEY`` environment variable.
-``authentication.oauth.<name>.secret``      OIDC client secret. Overridden by the ``OIDC_SECRET`` environment variable.
-``authentication.oauth.<name>.issuer_url``  OIDC issuer URL used for discovery and UserInfo endpoint resolution (e.g. ``https://your-idp/realms/myrealm``). Overridden by the ``OIDC_ISSUER_URL`` environment variable.
-``authentication.oauth.<name>.authorize_url`` *(optional)* Override for the authorization endpoint.
-``authentication.oauth.<name>.access_url``  *(optional)* Override for the token endpoint.
-``authentication.oauth.<name>.scope``       *(optional)* Array of OIDC scopes (e.g. ``["openid","email","profile"]``). Overridden by the ``OIDC_SCOPE`` environment variable.
-``authentication.oauth.<name>.nonce``       *(optional)* Whether to include a nonce in the authorization request. Overridden by the ``OIDC_NONCE`` environment variable. Default is ``false``.
-=========================================== =========================================================================
+============================================== =========================================================================
+Property                                       Description
+============================================== =========================================================================
+``authentication.oauth.<name>.key``            OIDC client ID. Overridden by the ``OIDC_KEY`` environment variable.
+``authentication.oauth.<name>.secret``         OIDC client secret. Overridden by the ``OIDC_SECRET`` environment variable.
+``authentication.oauth.<name>.issuer_url``     OIDC issuer URL used for discovery and UserInfo endpoint resolution (e.g. ``https://your-idp/realms/myrealm``). Overridden by the ``OIDC_ISSUER_URL`` environment variable.
+``authentication.oauth.<name>.authorize_url``  *(optional)* Override for the authorization endpoint.
+``authentication.oauth.<name>.access_url``     *(optional)* Override for the token endpoint.
+``authentication.oauth.<name>.scope``          *(optional)* Array of OIDC scopes (e.g. ``["openid","email","profile"]``). Overridden by the ``OIDC_SCOPE`` environment variable.
+``authentication.oauth.<name>.nonce``          *(optional)* Whether to include a nonce in the authorization request. Overridden by the ``OIDC_NONCE`` environment variable. Default is ``false``.
+============================================== =========================================================================
 
 Notification Email Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,24 +193,24 @@ Example of the ``resetPwd`` email template specified in a local file:
     }
   }
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``from_email``                                    The sender's email address. Default is ``no-reply@example.org``. Overridden by the ``FROM_EMAIL`` environment variable.
-``email_templates.otp``                           Sent to a user when an email-based OTP is issued.
-``email_templates.notifySignup``                  Sent to administrators when a new user signs up.
-``email_templates.resendVerifySignup``            Sent to a user with a new email verification link.
-``email_templates.verifySignup``                  Confirmation sent to a user after their email is verified.
-``email_templates.sendResetPwd``                  Sent to a user with a password-reset link.
-``email_templates.resetPwd``                      Confirmation sent to a user after a successful password reset.
-``email_templates.passwordChange``                Notification sent to a user after their password changes.
-``email_templates.infoParticipantsAboutToInit``   Sent to interviewers before participant accounts are activated.
-``email_templates.initParticipants``              Sent to interviewers when new participant accounts are activated.
-``email_templates.infoParticipantsAboutToExpire`` Sent to interviewers when participant accounts are close to expiring.
-``email_templates.remindParticipants``            Periodic reminder sent to interviewers about incomplete interviews.
-``email_templates.summaryParticipants``           Summary of participant progress for a campaign.
-``email_templates.interviewCompleted``            Sent to interviewers when a participant completes an interview.
-=========================================== =========================================================================
+================================================== =========================================================================
+Property                                           Description
+================================================== =========================================================================
+``from_email``                                     The sender's email address. Default is ``no-reply@example.org``. Overridden by the ``FROM_EMAIL`` environment variable.
+``email_templates.otp``                            Sent to a user when an email-based OTP is issued.
+``email_templates.notifySignup``                   Sent to administrators when a new user signs up.
+``email_templates.resendVerifySignup``             Sent to a user with a new email verification link.
+``email_templates.verifySignup``                   Confirmation sent to a user after their email is verified.
+``email_templates.sendResetPwd``                   Sent to a user with a password-reset link.
+``email_templates.resetPwd``                       Confirmation sent to a user after a successful password reset.
+``email_templates.passwordChange``                 Notification sent to a user after their password changes.
+``email_templates.infoParticipantsAboutToInit``    Sent to interviewers before participant accounts are activated.
+``email_templates.initParticipants``               Sent to interviewers when new participant accounts are activated.
+``email_templates.infoParticipantsAboutToExpire``  Sent to interviewers when participant accounts are close to expiring.
+``email_templates.remindParticipants``             Periodic reminder sent to interviewers about incomplete interviews.
+``email_templates.summaryParticipants``            Summary of participant progress for a campaign.
+``email_templates.interviewCompleted``             Sent to interviewers when a participant completes an interview.
+================================================== =========================================================================
 
 Tasks Settings
 ~~~~~~~~~~~~~~
