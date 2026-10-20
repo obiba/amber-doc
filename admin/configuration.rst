@@ -303,6 +303,17 @@ Example of a Docker Compose service with a mounted settings directory:
       volumes:
         - ./studio/public:/app/public
 
+.. _app_branding:
+
+Branding
+~~~~~~~~
+
+The Amber logo, the icons and the name of the apps can be replaced by the ones of the host organization, without rebuilding the apps:
+
+* **Logo**: put the logo image in the ``/app/public`` directory (for instance ``/app/public/my-logo.png``) and set ``theme.logo`` to its name (``"logo": "my-logo.png"``). The logo is displayed at most 120 pixels high in the banner of the front pages, and 28 pixels high (at most 160 pixels wide) in the header of Collect and Visit: an image with a transparent background, wider than high, fits best. When the logo is modified, give the new image another file name, so that the browsers do not display the previous one from their cache.
+* **Name**: the name of the app is a translation, overridden in the ``i18n`` settings (``main.brand`` in Collect and Visit, ``login.brand`` in the front pages of Visit).
+* **Icons**: the files of the ``/app/public`` directory replace the ones of the app with the same name: ``favicon.ico`` and ``favicon.svg`` (browser tab), ``apple-touch-icon.png`` (180x180 pixels, iOS home screen) and, for the progressive web apps, ``icons/icon-192x192.png``, ``icons/icon-512x512.png`` and ``manifest.json`` (the name and the icons of the installed app). These files are always revalidated, also by the installed apps, so that their modifications apply on the next app start. The icon and the name of an already installed app on the home screen are updated when the browser refreshes the app manifest, which can take some time (on iOS, the app must be installed again).
+
 Settings
 ~~~~~~~~
 
@@ -316,7 +327,7 @@ Property               Apps                     Description
 ``theme.footer``       Collect, Visit           CSS classes of the application footer.
 ``theme.drawer``       Studio, Visit            CSS classes of the side menu.
 ``theme.page``         Studio, Visit            CSS classes of the pages.
-``theme.logo``         Studio, Collect, Visit   *(optional)* URL of a logo image displayed in the banner of the front pages (for instance a file of the ``/app/public`` directory).
+``theme.logo``         Studio, Collect, Visit   *(optional)* URL of the host organization logo, replacing the Amber logo in the banner of the front pages and, in Collect and Visit, in the application header (for instance a file of the ``/app/public`` directory, see :ref:`app_branding`).
 ``theme.dark``         Visit                    Whether the dark flavor of the theme is applied. Default is ``false``.
 ``lock.enabled``       Collect                  Whether the app lock feature (a numeric code pad protecting the access to the app) is enabled.
 ``lock.shuffle``       Collect                  Whether the digits of the lock numeric pad are shuffled.
