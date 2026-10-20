@@ -17,7 +17,7 @@ When the list of records is filtered, only the filtered records are downloaded. 
 Step 2 - Select the download format
 -----------------------------------
 
-The download formats proposed in different formats.
+The records can be downloaded in different formats.
 
 **CSV**
 
@@ -28,7 +28,8 @@ The file downloaded is a text file in CSV format. There is no data dictionary in
 The file downloaded is a ZIP archive containing one folder per form-revision. Each of these folders includes:
 
 * the data dictionary in a **variables.json** file,
-* the data in **data.csv** file. The CSV files header line are the variable names.
+* the data in **data.csv** file. The CSV files header line are the variable names,
+* the uploaded files, in a **files** folder.
 
 **Excel**
 
@@ -40,7 +41,11 @@ The file downloaded is an Excel file, containing both the data dictionaries and 
 
 **JSON**
 
-The file downloaded is a single JSON object dump. It is made of one entry per form-revision, each of these containg:
+The file downloaded is a single JSON object dump. It is made of one entry per form-revision, each of these containing:
 
 * the ``data`` array of collected data objects (one per case report),
 * the ``variables`` array of variable objects (one per form field).
+
+**Files**
+
+The values of the file upload controls (see :ref:`cb_fe_files`) are exported as the path of each file, ``files/<id>/<file name>``, several paths for a control with several files. Only the **CSV (zip)** format includes the files themselves: each one is in the ``files`` folder next to the ``data.csv`` file of its form-revision, so that the paths of the data lead to them (this is also the structure expected by `Opal <https://www.obiba.org/pages/products/opal/>`_ for importing the files). With the other formats, the files can be downloaded one by one from the record page.

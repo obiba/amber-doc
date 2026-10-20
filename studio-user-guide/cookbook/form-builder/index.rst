@@ -1,7 +1,7 @@
 Form Builder
 ============
 
-The form builder is the user interface for designing and testing a form in the legacy format. For the forms of the new form engine, see :ref:`form_engine`.
+How-to recipes for designing and testing a form with the :ref:`form builder <form_engine>`. The recipes for the forms in the legacy format are in the :ref:`legacy form builder <cb_legacy_form_builder>` section.
 
 .. toctree::
    :maxdepth: 1
@@ -12,8 +12,11 @@ The form builder is the user interface for designing and testing a form in the l
    validation
    computed-field
    group
+   multi-steps
    image-map
+   files
    translation
    backup-restore
    style
    extension
+   legacy/index
