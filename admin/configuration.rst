@@ -4,9 +4,11 @@ Configuration
 Amber Server
 ------------
 
-See the `config/default.json <https://github.com/obiba/amber/blob/main/config/default.json>`_ settings in the source code for reference.
+See the `config/default.json <https://github.com/obiba/amber/blob/main/api/config/default.json>`_ settings in the source code for reference.
 
-Some of these settings can be overridden by environment variables (``.env`` file supported, see `Dotenv <https://www.dotenv.org/>`_). The list of the environment variables is described in the `Amber Environment Variables <https://github.com/obiba/amber/blob/main/README.md#environment-variables>`_ documentation.
+Some of these settings can be overridden by environment variables (``.env`` file supported, see `Dotenv <https://www.dotenv.org/>`_). The list of the environment variables is described in the `Amber Environment Variables <https://github.com/obiba/amber/blob/main/api/README.md#environment-variables>`_ documentation.
+
+The ``NODE_ENV`` environment variable names a configuration file that is merged with the default one: for instance, with ``NODE_ENV=production``, the settings of the ``config/production.json`` file override the default ones. See the `config/production.json <https://github.com/obiba/amber/blob/main/api/config/production.json>`_ example.
 
 Main Settings
 ~~~~~~~~~~~~~
@@ -16,6 +18,7 @@ Property                                    Description
 =========================================== =========================================================================
 ``host``                                    Server bind address. Default is ``localhost``.
 ``port``                                    Server port. Default is ``3030``.
+``public``                                  Path to the static files directory. Default is ``../public/``.
 ``encrypt_data``                            Whether the collected data are encrypted at rest in the database. Default is ``false``. Overridden by the ``ENCRYPT_DATA`` environment variable.
 ``encrypt_iv``                              Secret string used to derive the encryption initial vector — **must be changed in production**. Overridden by the ``APP_SECRET_IV`` environment variable.
 ``mongodb``                                 `MongoDB connection string <https://www.mongodb.com/docs/manual/reference/connection-string/>`_. Overridden by the ``MONGODB_URL`` environment variable. Default is ``mongodb://localhost:27017/amber``.
@@ -24,8 +27,22 @@ Property                                    Description
 ``amber_collect_url``                       The Amber Collect URL to be included in notification emails. Overridden by the ``AMBER_COLLECT_URL`` environment variable. Default is ``http://localhost:3090``.
 ``amber_visit_url``                         The Amber Visit URL to be included in notification emails. Overridden by the ``AMBER_VISIT_URL`` environment variable. Default is ``http://localhost:3070``.
 ``api_url``                                 The public URL of the Amber Server API. Overridden by the ``APP_URL`` environment variable. Default is ``http://localhost:3030/``.
+``group_urls``                              *(optional)* Amber Collect and Amber Visit URLs specific to the members of a group, to be included in notification emails (see below).
 ``recaptcha_secret_key``                    The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key. Leave empty to disable CAPTCHA validation. Overridden by the ``RECAPTCHA_SECRET_KEY`` environment variable.
 =========================================== =========================================================================
+
+When several instances of Amber Collect or Amber Visit are deployed (for instance with different settings for different groups of users), the ``group_urls`` setting maps a group name to its application URLs. The URLs of the first group of the user that has an entry are used in the notification emails; the default URLs apply otherwise.
+
+.. code-block:: json
+
+  {
+    "group_urls": {
+      "site-montreal": {
+        "amber_collect_url": "https://www.example.org/collect-montreal",
+        "amber_visit_url": "https://www.example.org/visit-montreal"
+      }
+    }
+  }
 
 Pagination Settings
 ~~~~~~~~~~~~~~~~~~~
@@ -57,6 +74,8 @@ See `Feathers Authentication Service <https://feathersjs.com/api/authentication/
 =========================================== =========================================================================
 Property                                    Description
 =========================================== =========================================================================
+``authentication.entity``                   Name of the entity (database collection) storing the authenticated users. Default is ``user``.
+``authentication.service``                  Feathers service used to look up the authenticated users. Default is ``user``.
 ``authentication.secret``                   The JWT signing secret, also used for encrypting individual data (when enabled). **Must be changed in production.** Overridden by the ``APP_SECRET_KEY`` environment variable.
 ``authentication.authStrategies``           List of enabled authentication strategies. Default is ``["jwt","local","participant","campaign","apiKey"]``.
 ``authentication.totp2faRequired``          Whether time-based OTP (TOTP) two-factor authentication is enforced for users. Default is ``true``.
@@ -212,6 +231,21 @@ Property                                           Description
 ``email_templates.interviewCompleted``             Sent to interviewers when a participant completes an interview.
 ================================================== =========================================================================
 
+.. _api_files_settings:
+
+Files Settings
+~~~~~~~~~~~~~~
+
+The files uploaded with the file controls of the forms (see :ref:`form_engine_files`) are stored in the MongoDB database (GridFS), encrypted when ``encrypt_data`` is enabled. A file is first uploaded as pending, then attached to its case report or interview when the record is saved. The files are deleted with their record and are included in the records exports.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``files.maxSize``                           Maximum size in bytes of an uploaded file. Default is ``20971520`` (20 MB). Overridden by the ``FILES_MAX_SIZE`` environment variable.
+``files.accept``                            List of the accepted MIME types of the uploaded files, wildcards such as ``image/*`` are supported. Default is ``[]`` (any type). Overridden by the ``FILES_ACCEPT`` environment variable (comma separated values).
+``files.pendingDays``                       Number of days after which an uploaded file that was not attached to a case report or an interview is deleted. Default is ``7``. Overridden by the ``FILES_PENDING_DAYS`` environment variable.
+=========================================== =========================================================================
+
 Tasks Settings
 ~~~~~~~~~~~~~~
 
@@ -232,33 +266,97 @@ Property                                    Description
 ``export.identifier_variable``              Variable name used as the participant identifier in exports. Default is ``id``.
 =========================================== =========================================================================
 
-Amber Studio
-------------
+.. _app_settings:
 
-Amber Studio is a Single Page Application (SPA) that needs to be built specifically for the deployment environment (Amber server URL and reCAPTCHA site key are to be provided). Then the configuration is used in the build phase. To facilitate the customization of the app, the `Amber Studio's settings.json <https://github.com/obiba/amber-studio/blob/main/settings.json>`_ can be amended.
+Amber Apps Settings
+-------------------
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``theme``                                   Some CSS classes to be applied on different components to minimally alter the style.
-``licenses``                                Licenses that can be applied to forms.
-``i18n``                                    Translations, per language. New languages can be added.
-=========================================== =========================================================================
+Amber Studio, Amber Collect and Amber Visit are Single Page Applications (SPA). Their deployment environment is set by the environment variables of their Docker image (Amber server URL, reCAPTCHA site key and path prefix, see :ref:`installation`), and their customization (theme, links, licenses, translations...) is defined in a ``settings.json`` file, read by the app when it starts in the browser.
 
-Amber Collect
--------------
+The default settings files are in the source code:
 
-Amber Collect is a Single Page Application (SPA) that needs to be built specifically for the deployment environment (Amber server URL and reCAPTCHA site key are to be provided). Then the configuration is used in the build phase. To facilitate the customization of the app, the `Amber Collect's settings.json <https://github.com/obiba/amber-collect/blob/main/settings.json>`_ can be amended.
+* `Amber Studio's settings.json <https://github.com/obiba/amber/blob/main/studio/public/settings.json>`_
+* `Amber Collect's settings.json <https://github.com/obiba/amber/blob/main/collect/public/settings.json>`_
+* `Amber Visit's settings.json <https://github.com/obiba/amber/blob/main/visit/public/settings.json>`_
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``theme``                                   Some CSS classes to be applied on different components to minimally alter the style.
-``lock``                                    Lock feature can be enabled, with an optionally shuffled numeric pad.
-``links``                                   Useful links.
-``licenses``                                Licenses that were applied to forms.
-``i18n``                                    Translations, per language. New languages can be added.
-=========================================== =========================================================================
+Settings File Deployment
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the Docker images, the settings file is ``/app/settings.json`` or ``/app/public/settings.json``: provide your own file to override the default one. The other files of the ``/app/public`` directory (logo, favicon...) are also copied to the web root of the app when the container starts.
+
+The settings file is served without caching, and the progressive web apps (Amber Collect and Amber Visit) fetch it from the network first: **the modifications of the settings file apply to the new app instances (a page reload), without rebuild nor container restart**. When offline, the progressive web apps start with the last settings they have fetched.
+
+.. note::
+  Mount a directory (e.g. ``-v ./studio/public:/app/public``) rather than the settings file alone: a single-file bind mount keeps pointing at the original file when an editor (vim, ``sed -i``...) saves by replacing it, so the modifications would not be seen by the container.
+
+Example of a Docker Compose service with a mounted settings directory:
+
+.. code-block:: yaml
+
+  services:
+    amber-studio:
+      image: obiba/amber-studio:latest
+      ports:
+        - "3080:80"
+      environment:
+        - AMBER_URL=https://amber.example.org
+      volumes:
+        - ./studio/public:/app/public
+
+Settings
+~~~~~~~~
+
+====================== ======================== =====================================================================
+Property               Apps                     Description
+====================== ======================== =====================================================================
+``theme.front.bg``     Studio, Collect, Visit   CSS classes of the background of the front pages (sign in, sign up, password reset...).
+``theme.front.card``   Studio, Collect, Visit   CSS classes of the card of the front pages.
+``theme.header``       Studio, Collect, Visit   CSS classes of the application header.
+``theme.header2``      Studio                   CSS classes of the page title toolbars.
+``theme.footer``       Collect, Visit           CSS classes of the application footer.
+``theme.drawer``       Studio, Visit            CSS classes of the side menu.
+``theme.page``         Studio, Visit            CSS classes of the pages.
+``theme.logo``         Studio, Collect, Visit   *(optional)* URL of a logo image displayed in the banner of the front pages (for instance a file of the ``/app/public`` directory).
+``theme.dark``         Visit                    Whether the dark flavor of the theme is applied. Default is ``false``.
+``lock.enabled``       Collect                  Whether the app lock feature (a numeric code pad protecting the access to the app) is enabled.
+``lock.shuffle``       Collect                  Whether the digits of the lock numeric pad are shuffled.
+``links``              Collect, Visit           Useful links displayed in the side menu, each one with a ``title`` (translation key or text), a ``caption``, an ``icon`` (`Material Icons <https://fonts.google.com/icons>`_ name) and a ``link`` (URL).
+``licenses``           Studio, Collect          Licenses that can be applied to forms, in addition to the Creative Commons ones: each one with a ``value`` (identifier) and a ``label`` (translation key).
+``i18n``               Studio, Collect, Visit   Translations, per language. The languages of the app are the keys of this object, so new languages can be added. The translations are merged with the built-in ones, so that any text of the app can be overridden.
+====================== ======================== =====================================================================
+
+The CSS classes can be any of the `Quasar CSS classes <https://quasar.dev/style/color-palette>`_ (``bg-dark``, ``text-white``, ``bg-primary``...) or of the app stylesheet (``bg-base`` in Amber Studio, ``bg-brand`` in Amber Visit...).
+
+Example of settings that add a link and override some texts of Amber Visit, in English and French:
+
+.. code-block:: json
+
+  {
+    "theme": {
+      "front": { "bg": "bg-brand text-white", "card": "bg-white text-dark" },
+      "header": "bg-dark text-white",
+      "footer": "bg-dark text-white",
+      "logo": "my-logo.png"
+    },
+    "links": [
+      {
+        "title": "main.study_website",
+        "caption": "www.example.org",
+        "icon": "public",
+        "link": "https://www.example.org"
+      }
+    ],
+    "i18n": {
+      "en": {
+        "locales": { "en": "English", "fr": "Français" },
+        "main": { "study_website": "Study website" }
+      },
+      "fr": {
+        "locales": { "en": "English", "fr": "Français" },
+        "main": { "study_website": "Site de l'étude" }
+      }
+    }
+  }
 
 
 Reverse Proxy Configuration

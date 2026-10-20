@@ -56,3 +56,19 @@ Depending on the browser's vendor, the procedure to install a shortcut icon to y
           :width: 200
 
           Install Amber Collect app from Phoenix browser: the "Add to home screen" action is proposed in the page's menu.
+
+App updates
+~~~~~~~~~~~
+
+When a new version of Amber Collect is deployed, a **Updated content is available** message is displayed: press **Refresh** to reload the app with the new version.
+
+Offline Usage
+-------------
+
+Once loaded, Amber Collect keeps working without network access:
+
+* the case reports that are completed while offline are kept in the browser, and their saving to the Amber server is retried automatically every minute, until the network is accessible again;
+* the files picked in the file upload controls of a form are stored in the browser, and uploaded when the case report is saved to the Amber server. They are then deleted from the browser. Deleting a case report that was not saved also deletes its files.
+
+.. note::
+  Do not clear the browser data of the app while some case reports are pending: they would be lost.

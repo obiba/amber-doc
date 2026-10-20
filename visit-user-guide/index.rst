@@ -12,6 +12,13 @@ Requirements
 
 This web interface is a JavaScript application requiring a modern web browser. There is no requirement regarding the operating system: it can be either a desktop or a mobile one.
 
+Installation
+------------
+
+Amber Visit is a `Progressive Web App <https://web.dev/what-are-pwas/>`_: it is accessible from a browser, at the Amber Visit app address, and it can also be installed on the user's desktop (computer) or home screen (mobile), the same way as Amber Collect (see the Amber Collect installation steps). Once loaded, the app keeps working when the network is temporarily not accessible (see `Offline data`_).
+
+When a new version of Amber Visit is deployed, a **Updated content is available** message is displayed: press **Refresh** to reload the app with the new version.
+
 Prerequisites
 -------------
 
@@ -58,6 +65,11 @@ The interview is completed when all the listed steps are completed. The particip
 
   A completed interview can be reopened from Amber Studio (**Data collection > Interviews**), if some answers need to be amended.
 
+Files
+~~~~~
+
+Some forms ask for files (pictures, scans, documents...) with file upload controls. The picked files are stored in the browser, and uploaded to the Amber server when the step is saved (on **Pause** or on completion). The uploaded files can then be downloaded by the investigators from Amber Studio.
+
 Language
 ~~~~~~~~
 
@@ -66,4 +78,7 @@ The language can be selected from the app's menu. The forms are displayed in the
 Offline data
 ~~~~~~~~~~~~
 
-If the network is not accessible when the step data are saved, a **Pending data save (are you offline?)** banner is displayed. Press **Save now** when the network is back to send the pending data to the Amber server.
+If the network is not accessible when the step data are saved, the step data (and its files) are kept in the browser and a **Pending data save (are you offline?)** banner is displayed. The pending steps are saved automatically when the network is back, and retried every minute; press **Save now** to send the pending data to the Amber server immediately.
+
+.. note::
+  Do not clear the browser data of the app, nor log out, while some steps are pending: they would be lost.
