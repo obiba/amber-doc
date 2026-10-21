@@ -50,7 +50,7 @@ For consistency, records are always grouped by their form-revision. The download
 The download formats proposed are:
 
 * CSV, downloaded as a text file in CSV format. There is one section per "Case report form". The header line of each section are the variable names.
-* CSV (zip), downloaded as a ZIP archive containing: one folder per form-revision including the data dictionary in **variables.json** file and the data in **data.csv** file. The CSV files header line are the variable names.
+* CSV (zip), downloaded as a ZIP archive containing: one folder per form-revision including the data dictionary in **variables.csv** file and the data in **data.csv** file. The CSV files header line are the variable names.
 * Excel, downloaded as an Excel file containing several work sheets: **Variables** are the variables for each of the "Case report form" (named by the **table** column), **Categories** are the variable categories and one sheet per "Case report form" holding the data in tabular format (one column per variable).
 * JSON, downloaded as a single JSON object dump made of: one entry per form-revision, each of these containing the ``data`` array and the ``variables``.
 

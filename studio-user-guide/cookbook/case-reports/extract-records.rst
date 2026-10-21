@@ -27,7 +27,7 @@ The file downloaded is a text file in CSV format. There is no data dictionary in
 
 The file downloaded is a ZIP archive containing one folder per form-revision. Each of these folders includes:
 
-* the data dictionary in a **variables.json** file,
+* the data dictionary in a **variables.csv** file (in the format of Opal),
 * the data in **data.csv** file. The CSV files header line are the variable names,
 * the uploaded files, in a **files** folder.
 
@@ -49,3 +49,17 @@ The file downloaded is a single JSON object dump. It is made of one entry per fo
 **Files**
 
 The values of the file upload controls (see :ref:`cb_fe_files`) are exported as the path of each file, ``files/<id>/<file name>``, several paths for a control with several files. Only the **CSV (zip)** format includes the files themselves: each one is in the ``files`` folder next to the ``data.csv`` file of its form-revision, so that the paths of the data lead to them (this is also the structure expected by `Opal <https://www.obiba.org/pages/products/opal/>`_ for importing the files). With the other formats, the files can be downloaded one by one from the record page.
+
+**Variables**
+
+The form items are exported as variables of the following types:
+
+* a number is ``integer`` when declared as such, ``decimal`` otherwise; a slider or a rating is ``integer``,
+* a date is ``date``, a date-time is ``datetime``, a toggle is ``boolean``, a map location is a geometry (``point`` by default),
+* a file upload is ``binary``, see the **Files** section above,
+* a matrix (see :ref:`item_radio_matrix`) is split into one variable per row, named ``<matrix>.<row>``: the columns are the categories of a radio matrix, while each row of a checkbox matrix is a ``boolean`` (``false`` when the matrix was answered and the row was not checked),
+* the variables of a repeatable group have one value per occurrence (a value sequence).
+
+**From Opal**
+
+`Opal <https://www.obiba.org/pages/products/opal/>`_ can import the records directly from Amber, using an API key (see :ref:`api_keys`).

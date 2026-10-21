@@ -9,3 +9,5 @@ This section is only accessible to users with the role ``Administrator``.
 
    users
    groups
+   api-keys
+   audit
