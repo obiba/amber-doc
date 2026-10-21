@@ -26,7 +26,7 @@ When creating an API key, the following fields are available:
 * **Name**, required, to identify the application using the key,
 * **Description**, optional,
 * **Studies**, required, the studies of which the data can be extracted,
-* **Expires**, optional, the key is valid until this date.
+* **Expires**, optional, the key is valid until the end of this day (in the time zone of the browser).
 
 Once saved, the key value is shown **only once**: copy it then, Amber only stores a hash of it.
 
