@@ -1,24 +1,16 @@
-.. _cb_condition:
+.. _cb_fe_condition:
 
 How to make fields conditional?
 ===============================
 
-A conditional field is a field that depends of data collected by one or more fields. The condition is logical value:
+A conditional field is a field that depends of data collected by one or more fields. In the *Rules* section of the element properties, the **Visible when** expression is evaluated with the form data each time it changes:
 
-* ``true``, the field is visible and data can be captured,
-* ``false``, the field is not visible and has no value (i.e. value will be removed when switching from ``true`` to ``false`` condition).
+* ``true``, the element is visible and data can be captured,
+* ``false``, the element is not visible and has no value (i.e. the value is cleared when the expression switches from ``true`` to ``false``).
 
-The condition is a short Javascript code. In the context of the execution of this code, the other field values can be accessed with the following syntax:
+The expression can also be set on a layout (a group, a section, a tab...): it then applies to all its elements. **Enabled when** works the same way, the element being displayed but disabled. **Required when** makes a field mandatory depending on other data.
 
-.. code::
-
-  $('VARIABLE')
-
-where ``VARIABLE`` is the name of the field from which the value is to retrieved. When the field is in a group, use a ``.`` for building the full name of the field. For instance, if the field with name ``VARIABLE`` is in a group with name ``GROUP``, the value of the field will be:
-
-.. code::
-
-  $('GROUP.VARIABLE')
+The other fields are named by their key; a field inside a group is named by the key of the group and the key of the field, separated by a ``.``: for instance ``GROUP.VARIABLE``. The expressions are described in :ref:`form_engine_expressions`.
 
 **Examples**
 
@@ -26,16 +18,25 @@ If the field is a numeric value:
 
 .. code::
 
-  $('VARIABLE') > 12
+  VARIABLE > 12
 
-If the field is an array value (case of multiple choices), to check that there is a value and that 2 choices have been made exactly:
-
-.. code::
-
-  $('VARIABLE') && $('VARIABLE').length === 2
-
-If the field is a string value representing a date, to check that there is a value and that the date is not in the future:
+If the field is a selection value:
 
 .. code::
 
-  $('VARIABLE') && Date.parse($('VARIABLE')) <= Date.now()
+  VARIABLE == 'other'
+
+If the field is an array value (case of multiple choices), to check that 2 choices have been made exactly, or that a given choice is selected:
+
+.. code::
+
+  length(VARIABLE) == 2
+  contains(VARIABLE, 'fever')
+
+If the field is a date, to check that there is a value and that the date is not in the future:
+
+.. code::
+
+  isNotEmpty(VARIABLE) && VARIABLE <= today()
+
+The options of a select or of radio buttons can be conditional too: in the *JSON* section, add ``"rules": { "visible": "..." }`` to the ``oneOf`` entry of the option (see :ref:`item_select`).

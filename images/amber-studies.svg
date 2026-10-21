@@ -1,25 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 400" width="1160" height="400"><defs><style>.t{font-family:Sora;font-weight:600;font-size:19px;fill:#0D2321;letter-spacing:-0.4px}.w{fill:#fff}.s{font-family:"Instrument Sans";font-size:14px;fill:#4F6663}.sw{fill:#D6EBE8}.c{font-family:"Instrument Sans";font-weight:600;font-size:15px;fill:#4F6663}.b{fill:#fff;stroke:#00615C;stroke-width:2.2}.f{fill:#00615C}.d{fill:#fff;stroke:#7FD3CB;stroke-width:2.2;stroke-dasharray:7 5}.l{stroke:#00615C;stroke-width:2.2;fill:none}</style><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00615C"/></marker></defs>
-<rect width="1160" height="400" fill="#fff"/>
-<g class="l"><path d="M240 95H330M530 95H620M820 95H920M720 130V280M1020 130V280M820 315H920"/></g>
-<rect class="f" x="40" y="60" width="200" height="70" rx="5"/>
-<rect class="b" x="330" y="60" width="200" height="70" rx="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 840" width="1160" height="840"><defs><style>.t{font-family:Sora;font-weight:600;font-size:19px;fill:#0D2321;letter-spacing:-0.4px}.w{fill:#fff}.s{font-family:"Instrument Sans";font-size:14px;fill:#4F6663}.sw{fill:#D6EBE8}.c{font-family:"Instrument Sans";font-weight:600;font-size:15px;fill:#4F6663}.b{fill:#fff;stroke:#00615C;stroke-width:2.2}.f{fill:#00615C}.d{fill:#fff;stroke:#7FD3CB;stroke-width:2.2;stroke-dasharray:7 5}.l{stroke:#00615C;stroke-width:2.2;fill:none}</style></defs>
+<rect width="1160" height="840" fill="#fff"/>
+<g class="l"><path d="M820 95H920M720 130V280M1020 130V280M240 315H330M530 315H620M820 315H920M140 350V500M720 350V500M1020 350V720M240 535H620M140 570V720M240 755H330M530 755H620M820 755H920"/></g>
 <rect class="b" x="620" y="60" width="200" height="70" rx="5"/>
-<rect class="d" x="920" y="60" width="200" height="70" rx="5"/>
+<rect class="b" x="920" y="60" width="200" height="70" rx="5"/>
+<rect class="f" x="40" y="280" width="200" height="70" rx="5"/>
+<rect class="b" x="330" y="280" width="200" height="70" rx="5"/>
 <rect class="b" x="620" y="280" width="200" height="70" rx="5"/>
-<rect class="b" x="920" y="280" width="200" height="70" rx="5"/>
+<rect class="d" x="920" y="280" width="200" height="70" rx="5"/>
+<rect class="b" x="40" y="500" width="200" height="70" rx="5"/>
+<rect class="b" x="620" y="500" width="200" height="70" rx="5"/>
+<rect class="b" x="40" y="720" width="200" height="70" rx="5"/>
+<rect class="b" x="330" y="720" width="200" height="70" rx="5"/>
+<rect class="b" x="620" y="720" width="200" height="70" rx="5"/>
+<rect class="b" x="920" y="720" width="200" height="70" rx="5"/>
 <g text-anchor="middle">
-<text class="t w" x="140" y="102">Study</text>
-<text class="t" x="430" y="92">Form</text><text class="s" x="430" y="114">schema, i18n</text>
-<text class="t" x="720" y="92">Form Version</text><text class="s" x="720" y="114">schema, i18n</text>
-<text class="t" x="1020" y="92">Dataset</text><text class="s" x="1020" y="114">dictionary, records</text>
-<text class="t" x="720" y="322">Case Report Form</text>
-<text class="t" x="1020" y="312">Case Report</text><text class="s" x="1020" y="334">record</text>
+<text class="t" x="720" y="102">Case Report Form</text>
+<text class="t" x="1020" y="92">Case Report</text><text class="s" x="1020" y="114">record</text>
+<text class="t w" x="140" y="322">Study</text>
+<text class="t" x="430" y="312">Form</text><text class="s" x="430" y="334">schema, i18n</text>
+<text class="t" x="720" y="312">Form Version</text><text class="s" x="720" y="334">schema, i18n</text>
+<text class="t" x="1020" y="312">Dataset</text><text class="s" x="1020" y="334">dictionary, records</text>
+<text class="t" x="140" y="532">Interview Design</text><text class="s" x="140" y="554">instructions, i18n</text>
+<text class="t" x="720" y="532">Step</text><text class="s" x="720" y="554">condition, disable</text>
+<text class="t" x="140" y="752">Campaign</text><text class="s" x="140" y="774">notifications</text>
+<text class="t" x="430" y="752">Participant</text><text class="s" x="430" y="774">code, attributes</text>
+<text class="t" x="720" y="752">Interview</text><text class="s" x="720" y="774">state</text>
+<text class="t" x="1020" y="752">Interview Step</text><text class="s" x="1020" y="774">record</text>
 </g>
 <g class="c">
-<text x="250" y="85">1</text><text x="314" y="85">n</text>
-<text x="540" y="85">1</text><text x="604" y="85">n</text>
 <text x="830" y="85">1</text><text x="904" y="85">n</text>
-<text x="730" y="152">1</text><text x="730" y="270">n</text>
-<text x="1030" y="152">1</text><text x="1030" y="270">n</text>
+<text x="730" y="152">n</text><text x="730" y="270">1</text>
+<text x="1030" y="152">n</text><text x="1030" y="270">1</text>
+<text x="250" y="305">1</text><text x="314" y="305">n</text>
+<text x="540" y="305">1</text><text x="604" y="305">n</text>
 <text x="830" y="305">1</text><text x="904" y="305">n</text>
+<text x="150" y="372">1</text><text x="150" y="490">n</text>
+<text x="730" y="372">1</text><text x="730" y="490">n</text>
+<text x="1030" y="372">1</text><text x="1030" y="710">n</text>
+<text x="250" y="525">1</text><text x="604" y="525">n</text>
+<text x="150" y="592">1</text><text x="150" y="710">n</text>
+<text x="250" y="745">1</text><text x="314" y="745">n</text>
+<text x="540" y="745">1</text><text x="604" y="745">1</text>
+<text x="830" y="745">1</text><text x="904" y="745">n</text>
 </g></svg>

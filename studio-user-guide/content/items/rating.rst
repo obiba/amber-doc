@@ -1,57 +1,56 @@
-.. _rating:
+.. _item_rating:
 
 Rating
 ======
 
-This item is for capturing a number value, on a scale starting from 1.
+An integer with ``options.format: "rating"`` renders a `QRating <https://quasar.dev/vue-components/rating>`__.
 
-See also the :ref:`slider` item when the range of values is large.
+The schema ``title`` and ``description`` are displayed above the rating and the ``hint`` of the control element under it, unless there is an error. Every other option is passed to ``QRating``: ``max``, ``icon``, ``iconSelected``, ``color``, ``size``, ``noReset``... ``max`` defaults to the schema ``maximum``.
 
-Preview
+Palette
 -------
 
-.. figure:: images/rating.png
-  :width: 600
+The entries of the form builder palette, and the schema property and UI schema element they create:
 
-  The rating field consists of selecting icons.
+========== =================================================== ========================================================
+Entry      Schema                                              UI schema
+========== =================================================== ========================================================
+**Rating** ``{"type": "integer", "minimum": 0, "maximum": 5}`` ``{"type": "Control", "options": {"format": "rating"}}``
+========== =================================================== ========================================================
 
-Design
+Schema
 ------
 
-Definition
-~~~~~~~~~~
+The schema shapes that select this renderer:
 
-.. include:: common-definition.rst
-.. include:: common-scripts.rst
+==================================================== ======================================================
+Schema                                               Description
+==================================================== ======================================================
+``{ "type": "integer" } + options.format: "rating"`` An integer property with the ``rating`` format option.
+==================================================== ======================================================
 
 Settings
-~~~~~~~~
+--------
 
-.. list-table::
-   :widths: 10 90
-   :header-rows: 1
+The settings of the renderer, in the *Settings* section of the element properties (stored in the ``options`` of the UI schema element), in addition to the :ref:`common settings <item_common_settings>`.
 
-   * - Property
-     - Definition
-   * - ``Default``
-     - The default value. Make sure it is in the right format.
-   * - ``Maximum``
-     - Maximum possible value (starting from 1).
+========= ====== ========================== =============================================================================================================================================================================================================
+Setting   Type   Default                    Description
+========= ====== ========================== =============================================================================================================================================================================================================
+``max``   Number ``schema maximum, else 5`` Number of icons.
+``icon``  String                            Icon name (Quasar icon set).
+``color`` String                            Quasar color of the icons.
+``size``  String                            Size of the icons, a CSS unit (``2em``) or a Quasar size (``md``).
+Other     any                               Every option is passed as a prop to `QRating <https://quasar.dev/vue-components/rating#qrating-api>`__: ``max``, ``icon``, ``iconSelected``, ``iconHalf``, ``color``, ``size``, ``noReset``, ``noDimming``...
+========= ====== ========================== =============================================================================================================================================================================================================
 
-Style
-~~~~~
+Data
+----
 
-.. list-table::
-   :widths: 10 90
-   :header-rows: 1
+An integer; no value displays no selected icon.
 
-   * - Property
-     - Definition
-   * - ``Label class``
-     - CSS class to apply to the field label. See :ref:`cb_style`
-   * - ``Icon``
-     - The name of the `Material Icon <https://fonts.google.com/icons?selected=Material+Icons>`_ to display. Default is ``star``.
-   * - ``Size``
-     - Size of the icon in CSS units, including unit name or standard size name (xs|sm|md|lg|xl). Examples: ``16px``, ``2rem``, ``xs``, ``md``.
-   * - ``Color``
-     - Color name in the `color palette <https://quasar.dev/style/color-palette>`_.
+.. code:: json
+
+   { "stars": 4 }
+
+See also the `Rating <https://www.obiba.org/quasar-json-form/#/controls/rating>`__ page of the Quasar JSON Form documentation, with live examples.

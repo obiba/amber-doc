@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = $(if $(wildcard venv/bin/sphinx-build),venv/bin/sphinx-build,sphinx-build)
 SPHINXPROJ    = Amber
 SOURCEDIR     = .
 BUILDDIR      = _build

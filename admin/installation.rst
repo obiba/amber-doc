@@ -1,3 +1,5 @@
+.. _installation:
+
 Installation
 ============
 
@@ -27,7 +29,7 @@ Memory (RAM) Minimum: 4GB, Recommended: >4GB
 Server Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Amber server and apps are pure JavaScript software based on `nodejs <https://nodejs.org/>`_ (Amber) and `Quasar <https://quasar.dev/>`_ (Amber Studio and Amber Collect). Despite it could be possible to set up a native runtime environment, we recommend to use a containerized one (Docker), to facilitate to customization and the deployment of the software applications.
+Amber server and apps are pure JavaScript software based on `nodejs <https://nodejs.org/>`_ (Amber) and `Quasar <https://quasar.dev/>`_ (Amber Studio, Amber Collect and Amber Visit). Despite it could be possible to set up a native runtime environment, we recommend to use a containerized one (Docker), to facilitate to customization and the deployment of the software applications.
 
 The database that is used by Amber server is `MongoDB <https://www.mongodb.com/>`_ which can also be deployed from a container.
 
@@ -73,6 +75,9 @@ Environment Variable            Description
 ``AMBER_VISIT_URL``             Amber Visit app url, to be included in the notification emails
 ``MONGODB_URL``                 The MongoDB connection string
 ``ENCRYPT_DATA``                Whether the patient/participant data should be encrypted in the database
+``FILES_MAX_SIZE``              The maximum size in bytes of an uploaded file. Default is 20 MB.
+``FILES_ACCEPT``                The accepted MIME types (comma separated values, wildcards such as ``image/*`` supported) of the uploaded files. Default is any.
+``FILES_PENDING_DAYS``          The number of days after which an uploaded file that is not attached to a case report or an interview is deleted. Default is 7.
 ``OTP_TIMEOUT``                 Number of minutes during which the onetime password (OTP) sent by email is valid. Default is 5; when set to 0, the email-based onetime password is deactivated. This does not apply to the time-based onetime password (TOTP) procedure, which can be activated per user.
 ``RECAPTCHA_SECRET_KEY``        The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ secret key.
 ``SIGNUP_WHITELIST``            List of email domains that are allowed to signup. Use '*' for wild card. Default is all.
@@ -115,7 +120,10 @@ Environment Variable            Description
 =============================== =========================================================================
 ``AMBER_URL``                   The URL to the Amber server.
 ``RECAPTCHA_SITE_KEY``          The `reCAPTCHA v3 <https://developers.google.com/recaptcha/docs/v3>`_ site key. If not provided, the Sign Up page will not be activated.
+``PATH_PREFIX``                 The public path of the app. Default is the root ``/``. Use it when the app is served under a sub-path, for instance ``/collect/`` for ``https://www.example.org/collect``.
 =============================== =========================================================================
+
+The customization of these apps (theme, links, translations...) is described in :ref:`app_settings`.
 
 Upgrade
 -------

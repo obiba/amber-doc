@@ -1,56 +1,63 @@
-.. _group:
+.. _item_group:
 
 Group
 =====
 
-The group item is a structural item: it does not collect any data, it only contains other items. As a consequence, this item will not appear in the exported data dictionary.
+A ``Group`` is a titled block of elements, with an optional description and hint.
 
-This item is appropriate when the form is rendered in multiple pages and several items are to be displayed in the same page. See also :ref:`section`.
+The ``label`` (JSON Forms convention, ``title`` is accepted too), ``description`` and ``hint`` are translated with vue-i18n and rendered as markdown. A ``Category`` inside a `Categorization <https://www.obiba.org/quasar-json-form/#/layouts/tabs>`__ renders the same way, without the title.
 
-Preview
+Palette
 -------
 
-.. figure:: images/group.png
-  :width: 600
+The entries of the form builder palette, and the schema property and UI schema element they create:
 
-  The group is a title followed by a paragraph and the list of child items.
+========= ====== =====================================================
+Entry     Schema UI schema
+========= ====== =====================================================
+**Tab**          ``{"type": "Category", "label": "", "elements": []}``
+**Group**        ``{"type": "Group", "label": "", "elements": []}``
+========= ====== =====================================================
 
-Design
+Schema
 ------
 
-Definition
-~~~~~~~~~~
+The schema shapes that select this renderer:
 
-.. list-table::
-   :widths: 10 90
-   :header-rows: 1
+============================================================= =====================================================================
+Schema                                                        Description
+============================================================= =====================================================================
+``{ "type": "Group", "label": "...", "elements": [...] }``    A titled block of elements.
+``{ "type": "Category", "label": "...", "elements": [...] }`` The content of a ``Categorization`` tab (the tab label is ``label``).
+============================================================= =====================================================================
 
-   * - Property
-     - Definition
-   * - ``Type``
-     - The type of item (see above).
-   * - ``Name``
-     - | The name of the group is not visible. It is used as a prefix to the child items variable name. For instance if the group name is ``NUTRITION`` and
-       | if it contains an item with name ``SUGAR``, the collected data of this child item will be accessible with the full name ``NUTRITION.SUGAR``.
-   * - ``Label``
-     - The label is usually a question or a title.
-   * - ``Description``
-     - The description gives some guidance about how to enter data, what are their meaning etc.
-   * - ``Condition``
-     - | The condition makes the group and its child items visible or not, depending of other data. It is a small script which returns a logical value: ``true`` when item is visible.
-       | When no condition is specified (which is the default), the group and its child item are visible. Each child item can have its own condition rule as well.
-       | See :ref:`cb_condition`
+Settings
+--------
 
-Style
-~~~~~
+The settings of the renderer, in the *Settings* section of the element properties (stored in the ``options`` of the UI schema element).
 
-.. list-table::
-   :widths: 10 90
-   :header-rows: 1
+========= ====== ======= =======================================================
+Setting   Type   Default Description
+========= ====== ======= =======================================================
+``class`` String         CSS classes of the root element (``q-group-renderer``).
+========= ====== ======= =======================================================
 
-   * - Property
-     - Definition
-   * - ``Label class``
-     - CSS class to apply to the group title. Default is ``text-h5``. See :ref:`cb_style`
-   * - ``Description class``
-     - CSS class to apply to the group description. Default is ``text-subtitle2 text-grey-8``.
+Element
+-------
+
+The keys read on the UI schema element:
+
+==================== ====== ====================================================================================================================================================================
+Key                  Type   Description
+==================== ====== ====================================================================================================================================================================
+``label``            String Title of the group (the JSON Forms convention); ``title`` is accepted too. Translated with ``t()`` and rendered as markdown, with ``{{ expression }}`` placeholders.
+``description``      String Text under the title, markdown, with ``{{ expression }}`` placeholders.
+``hint``             String Text after the elements, markdown, smaller and grey, with ``{{ expression }}`` placeholders.
+``elements``         Array  The child elements.
+``titleClass``       String CSS classes added to the title (``q-form-title``).
+``descriptionClass`` String CSS classes added to the description (``q-form-description``).
+``hintClass``        String CSS classes added to the hint (``q-form-hint``).
+``rules``            Object ``visible`` and ``enabled`` rules apply to the whole group.
+==================== ====== ====================================================================================================================================================================
+
+See also the `Group <https://www.obiba.org/quasar-json-form/#/layouts/group>`__ page of the Quasar JSON Form documentation, with live examples.

@@ -3,10 +3,12 @@
 Forms
 =====
 
-The forms are the heart of Amber. A form describes how the data will be collected, with a built-in support for multilanguage. The form's **schema** is made of:
+The forms are the heart of Amber. A form describes how the data will be collected, with a built-in support for multilanguage. A form's **schema** exists in two formats:
 
-* **Items**, which can be data input fields, structural items (group, section) or computed fields.
-* **Translations**, which is a list of translation keys with values for each language.
+* The **JSON Forms** format, rendered by the new :ref:`form_engine`: a JSON Schema describing the data, a UI schema describing the layout of the controls, and the translations. A new form is created in this format and is edited with a visual form builder.
+* The **legacy** format, made of **Items** (data input fields, structural items such as group and section, or computed fields) and **Translations** (a list of translation keys with values for each language). The forms in this format can still be edited and used, and can be converted to the new format (see :ref:`form_conversion`).
+
+The data collected have the same shape in both formats.
 
 Different versions of a form can be saved, which allows to safely edit a form while a version is used for data capture. Form versions also ensure that the data collected are properly described by the form that was used to collected them, avoiding variable renaming errors, options addition/removal conflicts, changes in the labels which could affect the question semantic etc.
 
@@ -23,7 +25,7 @@ Add a form
 
 When creating a form, a name is required, a description is optional. This is purely informative for management purpose and will not appear when the form is administered.
 
-It is possible to pre-populate the form with a schema that was previously exported from another form. This is optional and can also be done later.
+It is possible to pre-populate the form with a schema that was previously exported from another form, in either format. This is optional and can also be done later.
 
 Delete form(s)
 ~~~~~~~~~~~~~~
@@ -43,26 +45,35 @@ Single form
 
 To navigate to a form page, click on the form's name or the pencil icon. The page that is opened has two tabs:
 
-* The schema tab, with a form item's builder and translations editor,
+* The schema tab, with the form builder: the form settings and the :ref:`form builder <form_engine>` for a form in the JSON Forms format; the form items builder and the translations editor for a form in the legacy format,
 * The list of the form's versions.
 
 Export
 ~~~~~~
 
-Export the form's schema in text file (JSON format). Advanced users can edit this file, which can be convenient for the translations section for instance.
+Export the form's schema in text file (JSON format). Advanced users can edit this file, which can be convenient for the translations section for instance. A form in the JSON Forms format is exported with its form-level settings, its ``schema``, its ``uischema`` and its ``translations``.
 
 Import
 ~~~~~~
 
-Import a previously exported form schema. This operation will replace the whole tree of items and the translations.
+Import a previously exported form schema, in either format. This operation will replace the whole form schema (items and translations, or schema, UI schema and translations).
+
+Convert
+~~~~~~~
+
+Available for a form in the legacy format: converts the form to the new :ref:`form engine <form_engine>`, with a side by side preview of both forms. See :ref:`form_conversion`.
 
 Tag
 ~~~
 
 Creates a new form revision. Giving a comment that describes the changes in the form is recommended.
 
-Items
-~~~~~
+.. _forms_items:
+
+Items (legacy format)
+~~~~~~~~~~~~~~~~~~~~~
+
+This section applies to the forms in the legacy format. For the forms in the JSON Forms format, see :ref:`form_engine`.
 
 The form items is a tree which root is the form itself.
 
@@ -117,8 +128,8 @@ The scripting language is Javascript. It allows to express complex logic with a 
 * :ref:`cb_condition`
 * :ref:`cb_validation`
 
-Translations
-~~~~~~~~~~~~
+Translations (legacy format)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The translations are a list of tuples:
 

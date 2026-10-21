@@ -1,65 +1,41 @@
-.. _cb_large_select:
+.. _cb_fe_large_select:
 
 How to make a select with a lot of options?
 ===========================================
 
 When there are a lot of possible options it can be tricky to design a user friendly selection field.
 
-Step 1 - Select Auto complete field
------------------------------------
+Step 1 - Add a Typeahead control
+--------------------------------
 
-There several type of fields for selecting among a list of options:
+There are several controls for selecting among a list of options:
 
-* Single/Multiple choice
-* Dropdown
-* Auto complete
+* **Radio buttons** and **Checkboxes**, where all the options are visible,
+* **Select** and **Multiple select**, a dropdown menu,
+* **Typeahead** and **Multiple typeahead**, an input with filtered suggestions.
 
-The **Auto complete** is the most appropriate because there is not the problem of rendering a long list of proposed options. The field works as a filter: user enters at least two letters to trigger the display of the ten first items matching the entered text.
+The **Typeahead** (see :ref:`item_typeahead`) is the most appropriate: the options are proposed as the user types, so that there is no long list to scroll. The suggestions can also be extended with any text typed (the ``editable`` setting).
 
-Step 2 - Prepare the options
-----------------------------
+Step 2 - Set the options
+------------------------
 
-The options will be defined in file. The file format is CSV (comma separated values, with file suffix ``.csv`` or ``.txt``) or TSV (tab separated values, with file suffix ``.tsv``). No header is expected. The first value if the option value (the data collected), the second one is the option label (can be a translation key for a multilanguage form).
+The options are the ``values`` of the control: a list of texts, or of ``{ "value": ..., "label": ... }`` objects when the stored value differs from the displayed label. A long list is more easily pasted in the *JSON* section of the control properties (the UI schema element), or in the *Source* panel of the form builder:
 
-Example of options file (CSV):
+.. code-block:: json
 
-.. code::
+  {
+    "type": "Control",
+    "scope": "#/properties/hospital",
+    "options": {
+      "format": "typeahead",
+      "values": [
+        { "value": "H2C", "label": "Ahuntsic Central" },
+        { "value": "H2M", "label": "Ahuntsic East" },
+        { "value": "H2B", "label": "Ahuntsic North" }
+      ]
+    }
+  }
 
-  J0Y,Abitibi-Témiscamingue-Est (Radisson)
-  J0Z,Abitibi-Témiscamingue-Ouest (Guigues)
-  H2C,Ahuntsic Central
-  H2M,Ahuntsic East
-  H2B,Ahuntsic North
-  H2N,Ahuntsic Southeast
-  H3L,Ahuntsic Southwest
-  H0M,Akwesasne Region (Akwesasne)
-  G8M,Albanel
-  G8E,Alma North
-  G8B,Alma Southeast
-  G8C,Alma Southwest
-  J9T,Amos
-  G5J,Amqui
-  H1K,Anjou East
-  H1J,Anjou West
-  G0R,Appalaches (La Pocatière)
+The labels can be translation keys: their translations are then added in the *Translations* panel, or uploaded as a CSV file (see :ref:`cb_fe_translation`).
 
-When the value and the label are the same, it is possible to provide a simple list:
-
-.. code::
-
-  Hôpital chinois de Montréal
-  Hôpital géneral juif
-  Hôpital Santa Cabrini
-  Hôpital Mont-Sinaï - Montréal
-  Hôpital de Lachine
-  Hôpital Richardson
-  Hôpital Marie-Clarac
-  Institut de réadaptation Gingras-Lindsay de Montréal
-  Hôpital neurologique de Montréal
-  Centre gériatrique Maimonides Donald Berman
-  Hôpital Sainte-Anne
-
-Step 3 - Upload options
------------------------
-
-The **Options** setting proposes to **Upload options**: select the options file and the options values and labels will be automatically added.
+When the stored values must be validated, use a **Select** with ``oneOf`` choices instead: the values that are not among the choices are then reported as errors.

@@ -1,50 +1,55 @@
-.. _cb_validation:
+.. _cb_fe_validation:
 
 How to validate field values?
 =============================
 
-An open field needs to be validated.
+A field can be validated in three ways, from the simplest to the most flexible.
 
-The validation is a short Javascript code. In the context of the execution of this code, the ``val`` Javascript variable represents the value captured by the field to validate. The other field values can be accessed with the following syntax:
+Step 1 - Use the schema constraints
+-----------------------------------
 
-.. code::
+The *Validation* section of the control properties proposes the constraints that apply to the type of the field:
 
-  $('VARIABLE')
+* text: ``minLength``, ``maxLength``, ``pattern`` (a regular expression), ``format``,
+* number: ``minimum``, ``maximum``, ``exclusiveMinimum``, ``exclusiveMaximum``, ``multipleOf``,
+* list or multiple selection: ``minItems``, ``maxItems``, ``uniqueItems``.
 
-where ``VARIABLE`` is the name of the field from which the value is to retrieved. When the field is in a group, use a ``.`` for building the full name of the field. For instance, if the field with name ``VARIABLE`` is in a group with name ``GROUP``, the value of the field will be:
+Some controls have their own checks, set in the *Settings* section: the word limits of a text, the minimum and maximum of a date, the number of files etc.
 
-.. code::
+Step 2 - Add validation rules
+-----------------------------
 
-  $('GROUP.VARIABLE')
+For a check involving the value of other fields, add a **validation rule** in the *Validation* section: an expression that must be true, and the message displayed when it is false. The value of the field is named by its key, as the other fields (see :ref:`form_engine_expressions`). A field can have several validation rules, each with its own message.
 
-**Validation message**
-
-When field validation fails, a validation message should be prompted to help user to correct the answer.
+As an empty value does not satisfy most of the expressions, the validation rule of an optional field should also accept the empty value.
 
 **Examples**
 
-The text entered must have at least 10 characters:
+The text entered must have at least 10 words:
 
 .. code::
 
-  val && val.length >= 10
+  isEmpty(COMMENT) || wordCount(COMMENT) >= 10
 
 The number entered must be lower than another field value:
 
 .. code::
 
-  val && val < $('VARIABLE')
+  isEmpty(CIGARETTES) || CIGARETTES < CIGARETTES_MAX
 
 The date can be empty or not be in the future:
 
 .. code::
 
-  val === null || Date.parse(val) <= Date.now()
+  isEmpty(VISIT_DATE) || VISIT_DATE <= today()
 
-Working with date and time can be tricky, as the supported text format of the date can be different from one browser to another. For instance ``2022-03-07`` (ISO 8601 format, this is how a date value is captured) is not supported by Safari. For Safari ``2022/03/07`` is a valid date format, which works for the other browsers as well. Then we will use the ``replace()`` Javascript function to switch from one format to the other. The following validates that the arrival date at the hospital is either empty or is not in the future and is after the trauma date time:
+The arrival date and time at the hospital (a **Date and time** field, stored as ``YYYY-MM-DD HH:mm``) must be after the trauma date and time, and not in the future:
 
 .. code::
 
-  val == null ||
-    (Date.parse($('ARRIVAL.DATE').replace(/-/g, '/') + ' ' + val) <= Date.now()
-      && Date.parse($('ARRIVAL.DATE').replace(/-/g, '/') + ' ' + val) >= Date.parse($('TRAUMA.DATE').replace(/-/g, '/') + ' ' + $('TRAUMA.TIME')))
+  isEmpty(ARRIVAL.DATETIME) || (parseDate(ARRIVAL.DATETIME) <= now() && parseDate(ARRIVAL.DATETIME) >= parseDate(TRAUMA.DATETIME))
+
+Step 3 - Customize the error messages
+-------------------------------------
+
+The messages of the schema constraints are built-in, in English and French. A form can carry its own messages in its translations, for a field (``<key>.error.<constraint>``, for instance ``AGE.error.minimum``) or for the whole form (``error.<constraint>``, for instance ``error.required``). See :ref:`form_engine_validation`.

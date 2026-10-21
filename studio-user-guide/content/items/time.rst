@@ -1,49 +1,53 @@
-.. _time:
+.. _item_time:
 
 Time
 ====
 
-This field is for capturing a time value. It is expressed as a string in ISO 8601 format: ``hh:mm`` (2 digits hour, 2 digits minutes).
+A string with ``format: "time"`` renders an input with a `QTime <https://quasar.dev/vue-components/time>`__ popup.
 
-Preview
+``time`` stores ``HH:mm``; ``fulltime`` stores ``HH:mm:ss`` and shows the seconds in the picker. AJV validates ``time`` as the picker stores it (seconds and timezone optional).
+
+Palette
 -------
 
-.. figure:: images/time.png
-  :width: 600
+The entries of the form builder palette, and the schema property and UI schema element they create:
 
-  The time field is in ISO 8601 format.
+======== ======================================== =======================
+Entry    Schema                                   UI schema
+======== ======================================== =======================
+**Time** ``{"type": "string", "format": "time"}`` ``{"type": "Control"}``
+======== ======================================== =======================
 
-.. figure:: images/time-selection.png
-  :width: 600
-
-  The time selector allows to select the hour and minutes in the day. The close button can be translated.
-
-Design
+Schema
 ------
 
-Definition
-~~~~~~~~~~
+The schema shapes that select this renderer:
 
-.. include:: common-definition.rst
-.. include:: common-scripts.rst
+========================================== ===================================================================================================================
+Schema                                     Description
+========================================== ===================================================================================================================
+``{ "type": "string", "format": "time" }`` ``HH:mm`` input with a time picker (24h); validated by AJV as the picker stores it (seconds and timezone optional).
+``format: "fulltime" (schema or options)`` ``HH:mm:ss``, the picker shows the seconds.
+========================================== ===================================================================================================================
 
 Settings
-~~~~~~~~
+--------
 
-.. list-table::
-   :widths: 10 90
-   :header-rows: 1
+The settings of the renderer, in the *Settings* section of the element properties (stored in the ``options`` of the UI schema element), in addition to the :ref:`common settings <item_common_settings>`.
 
-   * - Property
-     - Definition
-   * - ``Hint``
-     - Help text below the input field.
-   * - ``Close``
-     - The close button's label. Use a translation key when you want to have it in several languages.
-   * - ``Default``
-     - The default value. Make sure it is in the right format.
+======= ==== ======= ====================================================================================================
+Setting Type Default Description
+======= ==== ======= ====================================================================================================
+Other   any          Every option is passed as a prop to `QInput <https://quasar.dev/vue-components/input#qinput-api>`__.
+======= ==== ======= ====================================================================================================
 
-Style
-~~~~~
+Data
+----
 
-.. include:: common-style.rst
+A string, ``HH:mm`` or ``HH:mm:ss``. Read-only, the picker icon is hidden.
+
+.. code:: json
+
+   { "start": "09:30", "precise": "09:30:15" }
+
+See also the `Time <https://www.obiba.org/quasar-json-form/#/controls/time>`__ page of the Quasar JSON Form documentation, with live examples.

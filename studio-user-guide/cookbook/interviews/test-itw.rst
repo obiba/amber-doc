@@ -42,4 +42,4 @@ Step 4 - Test in Amber Visit
 
 As one of the participant, login in the Amber Visit web app. In the home page, the interview steps should appear. Start answering interview steps and test different data entries to make sure conditions and validations within each form and between steps are correct.
 
-Once the interview is saved, go to the Amber Studio app, select the study and the **Data collection > Interviews** menu in the left drawer. Identify which interview you just saved (with the participant ID) and press the eye icon to see the data (in JSON format). This test interview must then be removed to not pollute the real collected data.
+Once the interview is saved, go to the Amber Studio app, select the study and the **Data collection > Interviews** menu in the left drawer. Identify which interview you just saved (with the participant ID) and press the eye icon to see the data (in JSON format), and the files uploaded in its steps, which can be downloaded. This test interview must then be removed to not pollute the real collected data.
